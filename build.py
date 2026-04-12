@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import csv
 import html
+import json
 import re
 import shutil
 import unicodedata
@@ -17,6 +18,7 @@ from urllib.parse import unquote
 ROOT = Path(__file__).parent
 SRC = ROOT / "notion-export"
 DST = ROOT / "docs"
+COVERS_MANIFEST = ROOT / "covers_manifest.json"
 SRC_ROOT_MD = SRC / "AwakeVC 3210c0891eaa43a485ab74a5d50c56a0.md"
 SRC_PAGES = SRC / "AwakeVC"
 
@@ -595,7 +597,8 @@ HOME_HERO = """
 """
 
 
-def home_content(pages: dict[str, Page]) -> str:
+def home_content(pages: dict[str, Page], covers: dict | None = None) -> str:
+    covers = covers or {}
     parts = [HOME_HERO]
 
     parts.append("""
@@ -625,7 +628,14 @@ def home_content(pages: dict[str, Page]) -> str:
             slug = slugify(title)
             page = pages.get(slug)
             label = page.title if page else title
-            parts.append(f'    <li><a href="pages/{slug}.html">{html.escape(label)}</a></li>')
+            icon_file = covers.get(slug, {}).get("icon_file")
+            icon_html = (
+                f'<img class="meta-icon" src="{icon_file}" alt="" loading="lazy">'
+                if icon_file else '<span class="meta-icon meta-icon-placeholder"></span>'
+            )
+            parts.append(
+                f'    <li><a href="pages/{slug}.html">{icon_html}<span>{html.escape(label)}</span></a></li>'
+            )
         parts.append('  </ul>')
         parts.append('</div>')
     parts.append('</div></section>')
@@ -669,7 +679,23 @@ def portfolio_block() -> str:
 # Build
 # ---------------------------------------------------------------------------
 
+def load_covers() -> dict:
+    if not COVERS_MANIFEST.exists():
+        return {}
+    return json.loads(COVERS_MANIFEST.read_text())
+
+
 def build():
+    # Preserve scraped covers + icons across rebuilds.
+    covers_backup = ROOT / ".covers-backup"
+    if (DST / "images" / "covers").exists():
+        if covers_backup.exists():
+            shutil.rmtree(covers_backup)
+        covers_backup.mkdir()
+        shutil.copytree(DST / "images" / "covers", covers_backup / "covers")
+        if (DST / "images" / "icons").exists():
+            shutil.copytree(DST / "images" / "icons", covers_backup / "icons")
+
     if DST.exists():
         shutil.rmtree(DST)
     DST.mkdir(parents=True)
@@ -679,6 +705,16 @@ def build():
 
     # Copy images first so resolve_image has a target.
     image_map = collect_and_copy_images()
+
+    # Restore covers + icons.
+    if covers_backup.exists():
+        if (covers_backup / "covers").exists():
+            shutil.copytree(covers_backup / "covers", DST / "images" / "covers")
+        if (covers_backup / "icons").exists():
+            shutil.copytree(covers_backup / "icons", DST / "images" / "icons")
+        shutil.rmtree(covers_backup)
+
+    covers = load_covers()
 
     # Walk export and build page registry.
     pages, name_to_slug = collect_pages()
@@ -692,12 +728,27 @@ def build():
         if slug == "portfolio":
             body_html += "\n" + portfolio_block()
 
+        cover_meta = covers.get(slug, {})
+        cover_file = cover_meta.get("cover_file")
+        icon_file = cover_meta.get("icon_file")
+        cover_html = ""
+        if cover_file:
+            cover_html = (
+                f'<div class="cover-hero" style="background-image:url(\'../{cover_file}\')"></div>'
+            )
+        title_inner = html.escape(page.title)
+        if icon_file:
+            title_inner = (
+                f'<img class="page-icon" src="../{icon_file}" alt="" loading="lazy">'
+                f'<span>{html.escape(page.title)}</span>'
+            )
         content = f"""
 <main class="page-main">
+  {cover_html}
   <div class="wrap narrow">
     <p class="breadcrumb"><a href="../index.html">&larr; Awake Multiverse</a></p>
     <article class="prose">
-      <h1 class="page-title">{html.escape(page.title)}</h1>
+      <h1 class="page-title{' with-icon' if icon_file else ''}">{title_inner}</h1>
       {body_html}
     </article>
   </div>
@@ -723,7 +774,7 @@ def build():
     home_html = render_page_shell(
         title="AwakeVC · Because Protocols Are Eating Venture",
         description="Awake Internet Protocols combine AI and FinTech to empower decentralized private equity for the multiverse.",
-        content=home_content(pages),
+        content=home_content(pages, covers),
         pages=pages,
         is_home=True,
     )
@@ -733,6 +784,7 @@ def build():
     (DST / "css" / "styles.css").write_text(STYLES, encoding="utf-8")
     (DST / "js" / "main.js").write_text(MAIN_JS, encoding="utf-8")
     (DST / ".nojekyll").write_text("", encoding="utf-8")
+    (DST / "CNAME").write_text("awake.vc\n", encoding="utf-8")
 
     print(f"Built {len(pages)} pages into {DST}")
 
@@ -1014,7 +1066,9 @@ a:hover { text-decoration: underline; text-decoration-thickness: 1.5px; text-und
   gap: 6px 8px;
 }
 .meta-pages li a {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   padding: 5px 12px;
   border: 1px solid var(--line);
   border-radius: 999px;
@@ -1023,6 +1077,16 @@ a:hover { text-decoration: underline; text-decoration-thickness: 1.5px; text-und
   background: var(--bg);
   transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 }
+.meta-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+.meta-icon-placeholder {
+  display: none;
+}
 .meta-pages li a:hover {
   background: var(--accent-soft);
   border-color: var(--accent);
@@ -1030,8 +1094,22 @@ a:hover { text-decoration: underline; text-decoration-thickness: 1.5px; text-und
   text-decoration: none;
 }
 
+/* ---------- Cover hero ---------- */
+.cover-hero {
+  width: 100%;
+  height: 280px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+@media (max-width: 720px) {
+  .cover-hero { height: 180px; }
+}
+
 /* ---------- Article page ---------- */
-.page-main { padding: 56px 0 96px; }
+.page-main { padding: 0; }
+.page-main > .wrap { padding-top: 40px; padding-bottom: 96px; }
+.page-main:not(:has(.cover-hero)) > .wrap { padding-top: 56px; }
 .breadcrumb {
   font-family: var(--mono);
   font-size: 12px;
@@ -1050,6 +1128,17 @@ a:hover { text-decoration: underline; text-decoration-thickness: 1.5px; text-und
   letter-spacing: -0.025em;
   margin: 0 0 36px;
   color: var(--ink);
+}
+.page-title.with-icon {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.page-icon {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
 .prose { font-size: 18px; line-height: 1.75; color: var(--ink-soft); }
