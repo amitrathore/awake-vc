@@ -16,7 +16,7 @@ from urllib.parse import unquote
 
 ROOT = Path(__file__).parent
 SRC = ROOT / "notion-export"
-DST = ROOT / "website"
+DST = ROOT / "docs"
 SRC_ROOT_MD = SRC / "AwakeVC 3210c0891eaa43a485ab74a5d50c56a0.md"
 SRC_PAGES = SRC / "AwakeVC"
 
