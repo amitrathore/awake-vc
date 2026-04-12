@@ -602,7 +602,7 @@ def home_content(pages: dict[str, Page], covers: dict | None = None) -> str:
 <section class="multiverse">
   <div class="wrap">
     <p class="section-eyebrow">The Awake Multiverse</p>
-    <h2 class="section-title">A whirlwind tour, by Meta.</h2>
+    <h2 class="section-title">A whirlwind tour.</h2>
     <p class="section-lede">
       A compendium of design constraints, market realities, philosophy, and methodology
       that together combine to form the foundation for the ecosystem powered by
