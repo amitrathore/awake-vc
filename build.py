@@ -717,13 +717,12 @@ def build():
     pages, name_to_slug = collect_pages()
 
     # Render each page.
+    SKIP_PAGES = {"portfolio"}
     for slug, page in pages.items():
+        if slug in SKIP_PAGES:
+            continue
         md_text = page.src_path.read_text(encoding="utf-8")
         body_html = render_md(md_text, name_to_slug, image_map, home_rel="../index.html")
-
-        # Append portfolio listing onto the portfolio page itself.
-        if slug == "portfolio":
-            body_html += "\n" + portfolio_block()
 
         cover_meta = covers.get(slug, {})
         cover_file = cover_meta.get("cover_file")
