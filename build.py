@@ -59,7 +59,7 @@ FOOTER_HTML = """
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-brand">
-      <a href="{home}" class="brand-mark">Awake<span class="brand-dot">.</span>vc</a>
+      <a href="{home}" class="brand-mark">awake<span class="brand-dot">.</span>vc</a>
       <p class="footer-tag">Because Protocols Are Eating Venture.</p>
     </div>
     <div class="footer-meta">
@@ -490,7 +490,7 @@ BASE_HTML = """<!doctype html>
   <header class="site-header">
     <div class="wrap">
       <a href="{home_rel}" class="brand">
-        <span class="brand-mark">Awake<span class="brand-dot">.</span>vc</span>
+        <span class="brand-mark">awake<span class="brand-dot">.</span>vc</span>
       </a>
       <nav class="site-nav">
         {nav_links}
