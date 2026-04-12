@@ -904,5 +904,11 @@
     "icon": null,
     "uuid": "ac919393eedd4f8a8f3118c5df9793a2",
     "url": "https://awakevc.notion.site/ac919393eedd4f8a8f3118c5df9793a2"
+  },
+  "disrupt": {
+    "title": "Disrupt",
+    "cover_file": "images/covers/disrupt.jpg",
+    "icon_file": "images/icons/disrupt.png",
+    "uuid": "454dd81f1f4741e798d28cac9382375b"
   }
 }
