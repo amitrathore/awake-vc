@@ -46,8 +46,8 @@ META_SECTIONS = [
      ["Inspiration", "Spirituality", "Energy", "Entrepreneurship", "Nature"]),
     ("Meta Awake",          "Private equity, WokeVC, beyond all clouds, blog, team.",
      ["PE", "TheWokeVC", "Beyond All Clouds", "Blog", "Team"]),
-    ("Meta Ventures",       "a64z, She, Creator, Acquihire, Careers, and the Portfolio.",
-     ["a64z", "She", "Creator", "Acquihire", "Careers", "Portfolio"]),
+    ("Meta Ventures",       "a64z, She, Creator, Acquihire, and Careers.",
+     ["a64z", "She", "Creator", "Acquihire", "Careers"]),
     ("Meta Launch",         "Incorporation, dogfooding, dragoneering, the Studio, and Disrupt.",
      ["Inc", "Dogfooding", "Dragoneering", "Studio", "Disrupt"]),
 ]
@@ -72,7 +72,6 @@ FOOTER_HTML = """
 NAV_ITEMS = [
     ("About",     "about"),
     ("Protocols", "protocols"),
-    ("Portfolio", "portfolio"),
     ("Team",      "team"),
 ]
 
@@ -564,7 +563,6 @@ HOME_HERO = """
     </p>
     <div class="hero-cta">
       <a class="btn btn-primary" href="pages/a64z.html">Meet a64z &rarr;</a>
-      <a class="btn btn-ghost" href="pages/portfolio.html">Portfolio</a>
     </div>
   </div>
 </section>
