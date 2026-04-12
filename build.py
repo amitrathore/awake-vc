@@ -559,8 +559,8 @@ HOME_HERO = """
     <h1 class="hero-title">Protocols are <em>eating</em> venture.</h1>
     <p class="hero-lede">
       Awake Internet Protocols combine <strong>AI</strong> and <strong>FinTech</strong>
-      to empower <strong>decentralized private equity</strong> for the multiverse.
-      An inter-network of interconnected companies, co-creating value at the pace of software.
+      to empower <strong>decentralized private equity</strong> for the agentic economy.
+      A network of interconnected companies, co-creating value at the pace of AI.
     </p>
     <div class="hero-cta">
       <a class="btn btn-primary" href="pages/a64z.html">Meet a64z &rarr;</a>
@@ -772,7 +772,7 @@ def build():
     # Render home.
     home_html = render_page_shell(
         title="AwakeVC · Because Protocols Are Eating Venture",
-        description="Awake Internet Protocols combine AI and FinTech to empower decentralized private equity for the multiverse.",
+        description="Awake Internet Protocols combine AI and FinTech to empower decentralized private equity for the agentic economy.",
         content=home_content(pages, covers),
         pages=pages,
         is_home=True,
