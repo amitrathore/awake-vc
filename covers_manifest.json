@@ -794,17 +794,6 @@
     "cover_file": "images/covers/team.jpg",
     "icon_file": "images/icons/team.png"
   },
-  "thewokevc": {
-    "title": "TheWokeVC",
-    "cover": "https://awakevc.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F124752d4-20f9-4a5d-942a-4fb62f430cce%2Fmonk-5357843_1920.jpg?table=block&id=df3b78be-03ac-40f2-a59d-4b3dd74de2cc&spaceId=97e8c70d-1337-43fb-b647-804563215289&width=2000&userId=&cache=v2",
-    "coverW": 1920,
-    "coverH": 1145,
-    "icon": "https://awakevc.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F48bae3c9-534f-4faf-b9db-39883cd6a046%2Fnoun_Buddha_2821192.png?id=df3b78be-03ac-40f2-a59d-4b3dd74de2cc&table=block&spaceId=97e8c70d-1337-43fb-b647-804563215289&width=250&userId=&cache=v2",
-    "uuid": "df3b78be03ac40f2a59d4b3dd74de2cc",
-    "url": "https://awakevc.notion.site/df3b78be03ac40f2a59d4b3dd74de2cc",
-    "cover_file": "images/covers/thewokevc.jpg",
-    "icon_file": "images/icons/thewokevc.png"
-  },
   "toontype": {
     "title": "Toontype",
     "cover": null,
