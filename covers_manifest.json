@@ -482,17 +482,6 @@
     "uuid": "d7898709f2d242ee821943ef274af142",
     "url": "https://awakevc.notion.site/d7898709f2d242ee821943ef274af142"
   },
-  "inc": {
-    "title": "Inc",
-    "cover": "https://awakevc.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F4e4c8fe8-e2c2-4fcf-ae25-0517a98bf9d6%2Fecommerce-3546296_1920.jpg?table=block&id=65747bb1-aa81-4e08-8855-4b07ba8dcd53&spaceId=97e8c70d-1337-43fb-b647-804563215289&width=2000&userId=&cache=v2",
-    "coverW": 1920,
-    "coverH": 655,
-    "icon": "https://awakevc.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F6bf3e39a-7011-40ba-9733-1af191f066bf%2FUnknown-15.png?id=65747bb1-aa81-4e08-8855-4b07ba8dcd53&table=block&spaceId=97e8c70d-1337-43fb-b647-804563215289&width=250&userId=&cache=v2",
-    "uuid": "65747bb1aa814e0888554b07ba8dcd53",
-    "url": "https://awakevc.notion.site/65747bb1aa814e0888554b07ba8dcd53",
-    "cover_file": "images/covers/inc.jpg",
-    "icon_file": "images/icons/inc.png"
-  },
   "inspiration": {
     "title": "Inspiration",
     "cover": "https://awakevc.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F54035984-1874-49b8-8fd8-a0cddd331239%2Floveourplanet-4851331_1920.jpg?table=block&id=dacaa4d3-9a56-4ffa-8fd7-af72e2f0e2dc&spaceId=97e8c70d-1337-43fb-b647-804563215289&width=2000&userId=&cache=v2",
@@ -693,17 +682,6 @@
     "url": "https://awakevc.notion.site/2c870469ef3e446c865f162190c4c0f9",
     "cover_file": "images/covers/salerank.jpg",
     "icon_file": "images/icons/salerank.png"
-  },
-  "she": {
-    "title": "She",
-    "cover": "https://awakevc.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F2b6ebf1e-4494-4b2c-8291-de9f80e4a0ea%2Fsuperhero-2483674_1280.png?table=block&id=708329fe-b567-4a5b-8d49-ad8cfbf3014b&spaceId=97e8c70d-1337-43fb-b647-804563215289&width=2000&userId=&cache=v2",
-    "coverW": 1201,
-    "coverH": 1280,
-    "icon": "https://awakevc.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F369dc7ed-bdb0-4103-bafd-5beb87b1b330%2Fnoun_Female_1757215.png?id=708329fe-b567-4a5b-8d49-ad8cfbf3014b&table=block&spaceId=97e8c70d-1337-43fb-b647-804563215289&width=250&userId=&cache=v2",
-    "uuid": "708329feb5674a5b8d49ad8cfbf3014b",
-    "url": "https://awakevc.notion.site/708329feb5674a5b8d49ad8cfbf3014b",
-    "cover_file": "images/covers/she.png",
-    "icon_file": "images/icons/she.png"
   },
   "shoptype": {
     "title": "Notion",

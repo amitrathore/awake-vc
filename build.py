@@ -46,10 +46,10 @@ META_SECTIONS = [
      ["Inspiration", "Spirituality", "Energy", "Entrepreneurship", "Nature"]),
     ("Meta Awake",          "Private equity, beyond all clouds, blog, team.",
      ["PE", "Beyond All Clouds", "Blog", "Team"]),
-    ("Meta Ventures",       "a64z, She, Creator, Acquihire, and Careers.",
-     ["a64z", "She", "Creator", "Acquihire", "Careers"]),
-    ("Meta Launch",         "Incorporation, dogfooding, dragoneering, the Studio, and Disrupt.",
-     ["Inc", "Dogfooding", "Dragoneering", "Studio", "Disrupt"]),
+    ("Meta Ventures",       "a64z, Creator, Acquihire, and Careers.",
+     ["a64z", "Creator", "Acquihire", "Careers"]),
+    ("Meta Launch",         "Dogfooding, dragoneering, the Studio, and Disrupt.",
+     ["Dogfooding", "Dragoneering", "Studio", "Disrupt"]),
 ]
 
 HASH_RE = re.compile(r"\s+[0-9a-f]{32}(?:\.md)?$")
