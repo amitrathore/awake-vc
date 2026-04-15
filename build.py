@@ -46,8 +46,6 @@ META_SECTIONS = [
      ["Inspiration", "Spirituality", "Energy", "Entrepreneurship", "Nature"]),
     ("Meta Awake",          "Private equity, beyond all clouds, blog, team.",
      ["PE", "Beyond All Clouds", "Blog", "Team"]),
-    ("Meta Ventures",       "a64z, Creator, Acquihire, and Careers.",
-     ["a64z", "Creator", "Acquihire", "Careers"]),
     ("Meta Launch",         "Dogfooding, dragoneering, the Studio, and Disrupt.",
      ["Dogfooding", "Dragoneering", "Studio", "Disrupt"]),
 ]

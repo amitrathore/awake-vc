@@ -8,17 +8,6 @@
     "uuid": "3d46a2f2de894a85a52ba93f2b91f2d7",
     "url": "https://awakevc.notion.site/3d46a2f2de894a85a52ba93f2b91f2d7"
   },
-  "a64z": {
-    "title": "a64z",
-    "cover": "https://awakevc.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fe25db714-4e49-4239-a1f7-f5bfeead7063%2Fdragon-238931_1920.jpg?table=block&id=5ae62658-3823-45f5-80cb-66469137476a&spaceId=97e8c70d-1337-43fb-b647-804563215289&width=2000&userId=&cache=v2",
-    "coverW": 1920,
-    "coverH": 1261,
-    "icon": "https://awakevc.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F7dc5b8eb-8dee-4fa5-9e13-1d3c02da1db1%2Fnoun_dragon_1878522-2.png?id=5ae62658-3823-45f5-80cb-66469137476a&table=block&spaceId=97e8c70d-1337-43fb-b647-804563215289&width=250&userId=&cache=v2",
-    "uuid": "5ae62658382345f580cb66469137476a",
-    "url": "https://awakevc.notion.site/5ae62658382345f580cb66469137476a",
-    "cover_file": "images/covers/a64z.jpg",
-    "icon_file": "images/icons/a64z.png"
-  },
   "acceleration": {
     "title": "Acceleration",
     "cover": "https://awakevc.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F99fce64b-67a8-443e-85f8-d238d0a49569%2Fbanner-1220390_1920.jpg?table=block&id=d88d64ce-f887-4e91-a3cf-3048e17e9af6&spaceId=97e8c70d-1337-43fb-b647-804563215289&width=2000&userId=&cache=v2",
@@ -29,17 +18,6 @@
     "url": "https://awakevc.notion.site/d88d64cef8874e91a3cf3048e17e9af6",
     "cover_file": "images/covers/acceleration.jpg",
     "icon_file": "images/icons/acceleration.png"
-  },
-  "acquihire": {
-    "title": "Acquihire",
-    "cover": "https://awakevc.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fba44c561-dcd3-47c9-834c-40dee65b3237%2Ffull-moon-2055469_1280.jpg?table=block&id=eb147b0f-ab37-4c10-985c-815e825e0993&spaceId=97e8c70d-1337-43fb-b647-804563215289&width=2000&userId=&cache=v2",
-    "coverW": 1280,
-    "coverH": 720,
-    "icon": "https://awakevc.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F03b99f3b-5af0-4194-9617-550678aedd81%2Fnoun_Rocket_2864526.png?id=eb147b0f-ab37-4c10-985c-815e825e0993&table=block&spaceId=97e8c70d-1337-43fb-b647-804563215289&width=250&userId=&cache=v2",
-    "uuid": "eb147b0fab374c10985c815e825e0993",
-    "url": "https://awakevc.notion.site/eb147b0fab374c10985c815e825e0993",
-    "cover_file": "images/covers/acquihire.jpg",
-    "icon_file": "images/icons/acquihire.png"
   },
   "althealth": {
     "title": "Notion",
@@ -229,17 +207,6 @@
     "cover_file": "images/covers/capfac.jpg",
     "icon_file": "images/icons/capfac.png"
   },
-  "careers": {
-    "title": "Careers",
-    "cover": "https://awakevc.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F18971241-2772-4204-9157-1bf5630c0b0b%2Fnetwork-4051664_1920.jpg?table=block&id=301fda40-3536-4649-967b-712535c99634&spaceId=97e8c70d-1337-43fb-b647-804563215289&width=2000&userId=&cache=v2",
-    "coverW": 1920,
-    "coverH": 1280,
-    "icon": "https://awakevc.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F9280af56-e12b-4cf6-97e6-2cc25993c409%2Fnoun_Rocket_1628795.png?id=301fda40-3536-4649-967b-712535c99634&table=block&spaceId=97e8c70d-1337-43fb-b647-804563215289&width=250&userId=&cache=v2",
-    "uuid": "301fda4035364649967b712535c99634",
-    "url": "https://awakevc.notion.site/301fda4035364649967b712535c99634",
-    "cover_file": "images/covers/careers.jpg",
-    "icon_file": "images/icons/careers.png"
-  },
   "coflora": {
     "title": "Coflora",
     "cover": null,
@@ -301,17 +268,6 @@
     "icon": null,
     "uuid": "e96087e16d844c648d4309209a555177",
     "url": "https://awakevc.notion.site/e96087e16d844c648d4309209a555177"
-  },
-  "creator": {
-    "title": "Creator",
-    "cover": "https://awakevc.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ff555004a-d3d5-45c7-92e2-4754838518da%2Fartist-3925238_1920.jpg?table=block&id=c9384d53-8a1a-4baa-a0e1-85624b8b6187&spaceId=97e8c70d-1337-43fb-b647-804563215289&width=2000&userId=&cache=v2",
-    "coverW": 1920,
-    "coverH": 1016,
-    "icon": "https://awakevc.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F7e2c629e-6915-4cf5-b896-cda136eb16d8%2FUnknown-14.png?id=c9384d53-8a1a-4baa-a0e1-85624b8b6187&table=block&spaceId=97e8c70d-1337-43fb-b647-804563215289&width=250&userId=&cache=v2",
-    "uuid": "c9384d538a1a4baaa0e185624b8b6187",
-    "url": "https://awakevc.notion.site/c9384d538a1a4baaa0e185624b8b6187",
-    "cover_file": "images/covers/creator.jpg",
-    "icon_file": "images/icons/creator.png"
   },
   "crypto": {
     "title": "Crypto",
