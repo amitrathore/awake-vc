@@ -8,17 +8,6 @@
     "uuid": "3d46a2f2de894a85a52ba93f2b91f2d7",
     "url": "https://awakevc.notion.site/3d46a2f2de894a85a52ba93f2b91f2d7"
   },
-  "a64z": {
-    "title": "a64z",
-    "cover": "https://awakevc.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fe25db714-4e49-4239-a1f7-f5bfeead7063%2Fdragon-238931_1920.jpg?table=block&id=5ae62658-3823-45f5-80cb-66469137476a&spaceId=97e8c70d-1337-43fb-b647-804563215289&width=2000&userId=&cache=v2",
-    "coverW": 1920,
-    "coverH": 1261,
-    "icon": "https://awakevc.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F7dc5b8eb-8dee-4fa5-9e13-1d3c02da1db1%2Fnoun_dragon_1878522-2.png?id=5ae62658-3823-45f5-80cb-66469137476a&table=block&spaceId=97e8c70d-1337-43fb-b647-804563215289&width=250&userId=&cache=v2",
-    "uuid": "5ae62658382345f580cb66469137476a",
-    "url": "https://awakevc.notion.site/5ae62658382345f580cb66469137476a",
-    "cover_file": "images/covers/a64z.jpg",
-    "icon_file": "images/icons/a64z.png"
-  },
   "acceleration": {
     "title": "Acceleration",
     "cover": "https://awakevc.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F99fce64b-67a8-443e-85f8-d238d0a49569%2Fbanner-1220390_1920.jpg?table=block&id=d88d64ce-f887-4e91-a3cf-3048e17e9af6&spaceId=97e8c70d-1337-43fb-b647-804563215289&width=2000&userId=&cache=v2",
@@ -29,17 +18,6 @@
     "url": "https://awakevc.notion.site/d88d64cef8874e91a3cf3048e17e9af6",
     "cover_file": "images/covers/acceleration.jpg",
     "icon_file": "images/icons/acceleration.png"
-  },
-  "acquihire": {
-    "title": "Acquihire",
-    "cover": "https://awakevc.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fba44c561-dcd3-47c9-834c-40dee65b3237%2Ffull-moon-2055469_1280.jpg?table=block&id=eb147b0f-ab37-4c10-985c-815e825e0993&spaceId=97e8c70d-1337-43fb-b647-804563215289&width=2000&userId=&cache=v2",
-    "coverW": 1280,
-    "coverH": 720,
-    "icon": "https://awakevc.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F03b99f3b-5af0-4194-9617-550678aedd81%2Fnoun_Rocket_2864526.png?id=eb147b0f-ab37-4c10-985c-815e825e0993&table=block&spaceId=97e8c70d-1337-43fb-b647-804563215289&width=250&userId=&cache=v2",
-    "uuid": "eb147b0fab374c10985c815e825e0993",
-    "url": "https://awakevc.notion.site/eb147b0fab374c10985c815e825e0993",
-    "cover_file": "images/covers/acquihire.jpg",
-    "icon_file": "images/icons/acquihire.png"
   },
   "althealth": {
     "title": "Notion",
@@ -229,17 +207,6 @@
     "cover_file": "images/covers/capfac.jpg",
     "icon_file": "images/icons/capfac.png"
   },
-  "careers": {
-    "title": "Careers",
-    "cover": "https://awakevc.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F18971241-2772-4204-9157-1bf5630c0b0b%2Fnetwork-4051664_1920.jpg?table=block&id=301fda40-3536-4649-967b-712535c99634&spaceId=97e8c70d-1337-43fb-b647-804563215289&width=2000&userId=&cache=v2",
-    "coverW": 1920,
-    "coverH": 1280,
-    "icon": "https://awakevc.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F9280af56-e12b-4cf6-97e6-2cc25993c409%2Fnoun_Rocket_1628795.png?id=301fda40-3536-4649-967b-712535c99634&table=block&spaceId=97e8c70d-1337-43fb-b647-804563215289&width=250&userId=&cache=v2",
-    "uuid": "301fda4035364649967b712535c99634",
-    "url": "https://awakevc.notion.site/301fda4035364649967b712535c99634",
-    "cover_file": "images/covers/careers.jpg",
-    "icon_file": "images/icons/careers.png"
-  },
   "coflora": {
     "title": "Coflora",
     "cover": null,
@@ -301,17 +268,6 @@
     "icon": null,
     "uuid": "e96087e16d844c648d4309209a555177",
     "url": "https://awakevc.notion.site/e96087e16d844c648d4309209a555177"
-  },
-  "creator": {
-    "title": "Creator",
-    "cover": "https://awakevc.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ff555004a-d3d5-45c7-92e2-4754838518da%2Fartist-3925238_1920.jpg?table=block&id=c9384d53-8a1a-4baa-a0e1-85624b8b6187&spaceId=97e8c70d-1337-43fb-b647-804563215289&width=2000&userId=&cache=v2",
-    "coverW": 1920,
-    "coverH": 1016,
-    "icon": "https://awakevc.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F7e2c629e-6915-4cf5-b896-cda136eb16d8%2FUnknown-14.png?id=c9384d53-8a1a-4baa-a0e1-85624b8b6187&table=block&spaceId=97e8c70d-1337-43fb-b647-804563215289&width=250&userId=&cache=v2",
-    "uuid": "c9384d538a1a4baaa0e185624b8b6187",
-    "url": "https://awakevc.notion.site/c9384d538a1a4baaa0e185624b8b6187",
-    "cover_file": "images/covers/creator.jpg",
-    "icon_file": "images/icons/creator.png"
   },
   "crypto": {
     "title": "Crypto",
@@ -481,17 +437,6 @@
     "icon": null,
     "uuid": "d7898709f2d242ee821943ef274af142",
     "url": "https://awakevc.notion.site/d7898709f2d242ee821943ef274af142"
-  },
-  "inc": {
-    "title": "Inc",
-    "cover": "https://awakevc.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F4e4c8fe8-e2c2-4fcf-ae25-0517a98bf9d6%2Fecommerce-3546296_1920.jpg?table=block&id=65747bb1-aa81-4e08-8855-4b07ba8dcd53&spaceId=97e8c70d-1337-43fb-b647-804563215289&width=2000&userId=&cache=v2",
-    "coverW": 1920,
-    "coverH": 655,
-    "icon": "https://awakevc.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F6bf3e39a-7011-40ba-9733-1af191f066bf%2FUnknown-15.png?id=65747bb1-aa81-4e08-8855-4b07ba8dcd53&table=block&spaceId=97e8c70d-1337-43fb-b647-804563215289&width=250&userId=&cache=v2",
-    "uuid": "65747bb1aa814e0888554b07ba8dcd53",
-    "url": "https://awakevc.notion.site/65747bb1aa814e0888554b07ba8dcd53",
-    "cover_file": "images/covers/inc.jpg",
-    "icon_file": "images/icons/inc.png"
   },
   "inspiration": {
     "title": "Inspiration",
@@ -694,17 +639,6 @@
     "cover_file": "images/covers/salerank.jpg",
     "icon_file": "images/icons/salerank.png"
   },
-  "she": {
-    "title": "She",
-    "cover": "https://awakevc.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F2b6ebf1e-4494-4b2c-8291-de9f80e4a0ea%2Fsuperhero-2483674_1280.png?table=block&id=708329fe-b567-4a5b-8d49-ad8cfbf3014b&spaceId=97e8c70d-1337-43fb-b647-804563215289&width=2000&userId=&cache=v2",
-    "coverW": 1201,
-    "coverH": 1280,
-    "icon": "https://awakevc.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F369dc7ed-bdb0-4103-bafd-5beb87b1b330%2Fnoun_Female_1757215.png?id=708329fe-b567-4a5b-8d49-ad8cfbf3014b&table=block&spaceId=97e8c70d-1337-43fb-b647-804563215289&width=250&userId=&cache=v2",
-    "uuid": "708329feb5674a5b8d49ad8cfbf3014b",
-    "url": "https://awakevc.notion.site/708329feb5674a5b8d49ad8cfbf3014b",
-    "cover_file": "images/covers/she.png",
-    "icon_file": "images/icons/she.png"
-  },
   "shoptype": {
     "title": "Notion",
     "cover": null,
@@ -793,17 +727,6 @@
     "url": "https://awakevc.notion.site/6c66ec3b44a74fa6b92cc74246597871",
     "cover_file": "images/covers/team.jpg",
     "icon_file": "images/icons/team.png"
-  },
-  "thewokevc": {
-    "title": "TheWokeVC",
-    "cover": "https://awakevc.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F124752d4-20f9-4a5d-942a-4fb62f430cce%2Fmonk-5357843_1920.jpg?table=block&id=df3b78be-03ac-40f2-a59d-4b3dd74de2cc&spaceId=97e8c70d-1337-43fb-b647-804563215289&width=2000&userId=&cache=v2",
-    "coverW": 1920,
-    "coverH": 1145,
-    "icon": "https://awakevc.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F48bae3c9-534f-4faf-b9db-39883cd6a046%2Fnoun_Buddha_2821192.png?id=df3b78be-03ac-40f2-a59d-4b3dd74de2cc&table=block&spaceId=97e8c70d-1337-43fb-b647-804563215289&width=250&userId=&cache=v2",
-    "uuid": "df3b78be03ac40f2a59d4b3dd74de2cc",
-    "url": "https://awakevc.notion.site/df3b78be03ac40f2a59d4b3dd74de2cc",
-    "cover_file": "images/covers/thewokevc.jpg",
-    "icon_file": "images/icons/thewokevc.png"
   },
   "toontype": {
     "title": "Toontype",
