@@ -73,6 +73,16 @@ NAV_ITEMS = [
     ("Team",      "team"),
 ]
 
+EXCLUDED_SLUGS = {
+    "a64z",
+    "acquihire",
+    "careers",
+    "creator",
+    "inc",
+    "she",
+    "thewokevc",
+}
+
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
@@ -135,8 +145,10 @@ def collect_pages() -> tuple[dict[str, Page], dict[str, str]]:
 
         text = path.read_text(encoding="utf-8")
         title = title_from_md(text, raw_title)
-        pages[slug] = Page(path, slug, title)
         name_to_slug[name] = slug
+        if slug in EXCLUDED_SLUGS:
+            continue
+        pages[slug] = Page(path, slug, title)
 
     return pages, name_to_slug
 
@@ -560,7 +572,7 @@ HOME_HERO = """
       A network of interconnected companies, co-creating value at the pace of AI.
     </p>
     <div class="hero-cta">
-      <a class="btn btn-primary" href="pages/a64z.html">Meet a64z &rarr;</a>
+      <a class="btn btn-primary" href="pages/protocols.html">Explore Protocols &rarr;</a>
     </div>
   </div>
 </section>
