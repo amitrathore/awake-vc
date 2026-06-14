@@ -590,12 +590,12 @@ HOME_HERO = """
       <span class="card-desc">Building Intergraph.ai &mdash; stay tuned.</span>
     </a>
     <a class="card-link" href="https://Coselling.ai" target="_blank" rel="noopener">
-      <span class="card-label">Product</span>
+      <span class="card-label">Venture</span>
       <span class="card-title">Coselling.ai</span>
       <span class="card-desc">Community commerce for brands and agents.</span>
     </a>
     <a class="card-link" href="https://OutcomeMachines.com" target="_blank" rel="noopener">
-      <span class="card-label">Product</span>
+      <span class="card-label">Venture</span>
       <span class="card-title">Outcome Machines</span>
       <span class="card-desc">Decision Intelligence for the Age of AI</span>
     </a>
