@@ -74,7 +74,8 @@ FOOTER_HTML = """
 NAV_ITEMS = [
     ("Studio",   "#studio"),
     ("Ventures", "#ventures"),
-    ("Library",  "#library"),
+    ("Writing",  "#writing"),
+    ("Thesis",   "#thesis"),
     ("Team",     "team"),
 ]
 
@@ -604,7 +605,7 @@ HOME_HERO = """
     </p>
     <div class="hero-cta">
       <a class="btn btn-primary" href="mailto:info@awake.vc?subject=AwakeVC%20venture%20studio%20conversation">Start a conversation &rarr;</a>
-      <a class="btn btn-ghost" href="#library">Explore the library</a>
+      <a class="btn btn-ghost" href="#thesis">Explore the thesis</a>
     </div>
   </div>
 </section>
@@ -664,15 +665,43 @@ HOME_HERO = """
       <span class="card-title">Commerce of Agents</span>
       <span class="card-desc">A new economic model for AI-native markets</span>
     </a>
+  </div>
+</section>
+
+<section class="callouts writing-section" id="writing">
+  <div class="wrap">
+    <p class="section-eyebrow">Writing</p>
+    <h2 class="section-title">Books, essays, and field notes.</h2>
+    <p class="section-lede">
+      AwakeVC co-creates writing around AI-native venture building, awakened value
+      co-creation, human agency, and the operating ideas behind new markets.
+    </p>
+  </div>
+  <div class="wrap callouts-grid">
     <a class="card-link" href="https://BookOfAgents.com" target="_blank" rel="noopener">
-      <span class="card-label">Writing</span>
+      <span class="card-label">Book</span>
       <span class="card-title">Book of Agents</span>
       <span class="card-desc">Building Intergraph.ai &mdash; stay tuned.</span>
+    </a>
+    <a class="card-link" href="pages/blog.html">
+      <span class="card-label">Blog</span>
+      <span class="card-title">AwakeVC Blog</span>
+      <span class="card-desc">Field notes from the AwakeVC thesis and venture studio.</span>
+    </a>
+    <a class="card-link" href="https://thefractals.co/#blog" target="_blank" rel="noopener">
+      <span class="card-label">Book</span>
+      <span class="card-title">Radical Knowledge for the Age of AI</span>
+      <span class="card-desc">Applied consciousness, radical agency, and the human side of AI.</span>
     </a>
     <a class="card-link" href="https://EffectiveHumanism.org" target="_blank" rel="noopener">
       <span class="card-label">Worldview</span>
       <span class="card-title">Effective Humanism</span>
       <span class="card-desc">Awakened Value Co-creation as a practice.</span>
+    </a>
+    <a class="card-link" href="https://TheFractals.co" target="_blank" rel="noopener">
+      <span class="card-label">Practice</span>
+      <span class="card-title">The Fractals</span>
+      <span class="card-desc">Radical entrepreneurship, clarity, and agency for the age of AI.</span>
     </a>
   </div>
 </section>
@@ -684,9 +713,9 @@ def home_content(pages: dict[str, Page], covers: dict | None = None) -> str:
     parts = [HOME_HERO]
 
     parts.append("""
-<section class="multiverse" id="library">
+<section class="multiverse" id="thesis">
   <div class="wrap">
-    <p class="section-eyebrow">Background Library</p>
+    <p class="section-eyebrow">Thesis</p>
     <h2 class="section-title">The theory behind the studio.</h2>
     <p class="section-lede">
       The existing AwakeVC corpus now lives as supporting context: theory,
@@ -827,7 +856,7 @@ def build():
 <main class="page-main">
   {cover_html}
   <div class="wrap narrow">
-    <p class="breadcrumb"><a href="../index.html#library">&larr; Background Library</a></p>
+    <p class="breadcrumb"><a href="../index.html#thesis">&larr; Thesis</a></p>
     <article class="prose">
       <h1 class="page-title{' with-icon' if icon_file else ''}">{title_inner}</h1>
       {body_html}
@@ -1156,7 +1185,8 @@ a:hover { text-decoration: underline; text-decoration-thickness: 1.5px; text-und
 }
 #studio,
 #ventures,
-#library {
+#writing,
+#thesis {
   scroll-margin-top: 84px;
 }
 

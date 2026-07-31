@@ -276,7 +276,8 @@ a:hover { text-decoration: underline; text-decoration-thickness: 1.5px; text-und
 }
 #studio,
 #ventures,
-#library {
+#writing,
+#thesis {
   scroll-margin-top: 84px;
 }
 
