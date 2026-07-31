@@ -459,6 +459,32 @@ a:hover { text-decoration: underline; text-decoration-thickness: 1.5px; text-und
 .callout p:last-child { margin-bottom: 0; }
 .callout a { color: var(--accent-ink); }
 
+/* ---------- Co-create form page ---------- */
+.co-create-main > .co-create-intro .wrap {
+  padding-top: 56px;
+  padding-bottom: 24px;
+}
+.co-create-form {
+  padding: 0 0 96px;
+}
+.co-create-form .wrap {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.tally-embed-shell {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  box-shadow: var(--shadow-sm);
+}
+.tally-embed-shell iframe {
+  display: block;
+  width: 100%;
+  min-height: min(900px, calc(100vh - 140px));
+  border: 0;
+}
+
 /* ---------- Portfolio ---------- */
 .portfolio { margin-top: 40px; }
 .portfolio-year { margin-bottom: 56px; }
@@ -565,4 +591,9 @@ a:hover { text-decoration: underline; text-decoration-thickness: 1.5px; text-und
   .footer-meta { text-align: left; }
   .prose { font-size: 17px; }
   .page-main { padding: 32px 0 72px; }
+  .co-create-main { padding: 0; }
+  .co-create-main > .co-create-intro .wrap { padding-top: 36px; }
+  .co-create-form { padding-bottom: 56px; }
+  .tally-embed-shell { padding: 10px; }
+  .tally-embed-shell iframe { min-height: calc(100vh - 96px); }
 }

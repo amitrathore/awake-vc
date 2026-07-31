@@ -22,6 +22,7 @@ COVERS_MANIFEST = ROOT / "covers_manifest.json"
 SRC_ROOT_MD = SRC / "AwakeVC 3210c0891eaa43a485ab74a5d50c56a0.md"
 SRC_PAGES = SRC / "AwakeVC"
 SITE_URL = "https://awake.vc"
+TALLY_FORM_ID = "WOX72a"
 OG_IMAGE_SRC = ROOT / "assets" / "images" / "og-awakevc.png"
 OG_IMAGE_PATH = "images/og-awakevc.png"
 OG_IMAGE_ALT = "AwakeVC venture studio network visual with luminous AI-native venture pathways."
@@ -65,7 +66,7 @@ FOOTER_HTML = """
       <p class="footer-tag">Because Protocols Are Eating Venture.</p>
     </div>
     <div class="footer-meta">
-      <p>San Mateo, CA &middot; <a href="tel:+16509187312">+1&nbsp;650&nbsp;918&nbsp;7312</a> &middot; <a href="mailto:info@awake.vc">info@awake.vc</a></p>
+      <p>San Mateo, CA &middot; <a href="tel:+16509187312">+1&nbsp;650&nbsp;918&nbsp;7312</a> &middot; <a href="{contact_href}">Co-create with AwakeVC</a></p>
     </div>
   </div>
 </footer>
@@ -560,12 +561,14 @@ def render_page_shell(title: str, description: str, content: str,
         js_rel = "js/main.js"
         home_rel = "index.html"
         page_rel_prefix = "pages/"
+        contact_href = "pages/co-create.html"
         body_class = "home"
     else:
         css_rel = "../css/styles.css"
         js_rel = "../js/main.js"
         home_rel = "../index.html"
         page_rel_prefix = ""
+        contact_href = "co-create.html"
         body_class = "page"
     return BASE_HTML.format(
         title=html.escape(title, quote=True),
@@ -579,7 +582,7 @@ def render_page_shell(title: str, description: str, content: str,
         body_class=body_class,
         nav_links=nav_html(pages, home_rel, page_rel_prefix),
         content=content,
-        footer=FOOTER_HTML.format(home=home_rel),
+        footer=FOOTER_HTML.format(home=home_rel, contact_href=contact_href),
     )
 
 
@@ -592,7 +595,7 @@ def canonical_url(path_rel: str = "") -> str:
 # Home page
 # ---------------------------------------------------------------------------
 
-HOME_HERO = """
+HOME_HERO = f"""
 <section class="hero" id="studio">
   <div class="wrap">
     <p class="eyebrow">Venture Studio for the Age of AI</p>
@@ -604,7 +607,7 @@ HOME_HERO = """
       background protocols behind awakened value co-creation.
     </p>
     <div class="hero-cta">
-      <a class="btn btn-primary" href="mailto:info@awake.vc?subject=AwakeVC%20venture%20studio%20conversation">Start a conversation &rarr;</a>
+      <a class="btn btn-primary" href="pages/co-create.html">Start a co-creation enquiry &rarr;</a>
       <a class="btn btn-ghost" href="#thesis">Explore the thesis</a>
     </div>
   </div>
@@ -688,11 +691,6 @@ HOME_HERO = """
       <span class="card-title">AwakeVC Blog</span>
       <span class="card-desc">Field notes from the AwakeVC thesis and venture studio.</span>
     </a>
-    <a class="card-link" href="https://thefractals.co/#blog" target="_blank" rel="noopener">
-      <span class="card-label">Book</span>
-      <span class="card-title">Radical Knowledge for the Age of AI</span>
-      <span class="card-desc">Applied consciousness, radical agency, and the human side of AI.</span>
-    </a>
     <a class="card-link" href="https://EffectiveHumanism.org" target="_blank" rel="noopener">
       <span class="card-label">Worldview</span>
       <span class="card-title">Effective Humanism</span>
@@ -752,6 +750,50 @@ def home_content(pages: dict[str, Page], covers: dict | None = None) -> str:
     parts.append('</div></section>')
 
     return "\n".join(parts)
+
+
+def co_create_content() -> str:
+    embed_src = (
+        f"https://tally.so/embed/{TALLY_FORM_ID}"
+        "?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+    )
+    return f"""
+<main class="page-main co-create-main">
+  <section class="co-create-intro">
+    <div class="wrap narrow">
+      <p class="breadcrumb"><a href="../index.html">&larr; AwakeVC</a></p>
+      <p class="section-eyebrow">Co-create With AwakeVC</p>
+      <h1 class="page-title">Tell us what you want to build.</h1>
+      <p class="section-lede">
+        This enquiry is for corporates, founders, SMEs, SMBs, artists, creators,
+        managers, career transitioners, and first-time job seekers exploring new
+        startups and shared-value ventures for the age of AI.
+      </p>
+    </div>
+  </section>
+  <section class="co-create-form">
+    <div class="wrap narrow">
+      <div class="tally-embed-shell">
+        <iframe
+          data-tally-src="{embed_src}"
+          loading="lazy"
+          width="100%"
+          height="900"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0"
+          title="Co-create value with AwakeVC"></iframe>
+      </div>
+    </div>
+  </section>
+  <script src="https://tally.so/widgets/embed.js"></script>
+  <script>
+    if (window.Tally) {{
+      window.Tally.loadEmbeds();
+    }}
+  </script>
+</main>
+"""
 
 
 # ---------------------------------------------------------------------------
@@ -880,6 +922,17 @@ def build():
             path_rel=f"pages/{slug}.html",
         )
         (DST / "pages" / f"{slug}.html").write_text(html_out, encoding="utf-8")
+
+    # Render co-creation enquiry page.
+    co_create_html = render_page_shell(
+        title="Co-create With AwakeVC · Venture Studio for the Age of AI",
+        description="Tell AwakeVC what you want to build, transform, or co-create through new AI-native ventures.",
+        content=co_create_content(),
+        pages=pages,
+        is_home=False,
+        path_rel="pages/co-create.html",
+    )
+    (DST / "pages" / "co-create.html").write_text(co_create_html, encoding="utf-8")
 
     # Render home.
     home_html = render_page_shell(
@@ -1368,6 +1421,32 @@ a:hover { text-decoration: underline; text-decoration-thickness: 1.5px; text-und
 .callout p:last-child { margin-bottom: 0; }
 .callout a { color: var(--accent-ink); }
 
+/* ---------- Co-create form page ---------- */
+.co-create-main > .co-create-intro .wrap {
+  padding-top: 56px;
+  padding-bottom: 24px;
+}
+.co-create-form {
+  padding: 0 0 96px;
+}
+.co-create-form .wrap {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.tally-embed-shell {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  box-shadow: var(--shadow-sm);
+}
+.tally-embed-shell iframe {
+  display: block;
+  width: 100%;
+  min-height: min(900px, calc(100vh - 140px));
+  border: 0;
+}
+
 /* ---------- Portfolio ---------- */
 .portfolio { margin-top: 40px; }
 .portfolio-year { margin-bottom: 56px; }
@@ -1474,6 +1553,11 @@ a:hover { text-decoration: underline; text-decoration-thickness: 1.5px; text-und
   .footer-meta { text-align: left; }
   .prose { font-size: 17px; }
   .page-main { padding: 32px 0 72px; }
+  .co-create-main { padding: 0; }
+  .co-create-main > .co-create-intro .wrap { padding-top: 36px; }
+  .co-create-form { padding-bottom: 56px; }
+  .tally-embed-shell { padding: 10px; }
+  .tally-embed-shell iframe { min-height: calc(100vh - 96px); }
 }
 """
 
