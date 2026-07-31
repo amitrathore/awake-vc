@@ -21,6 +21,10 @@ DST = ROOT / "docs"
 COVERS_MANIFEST = ROOT / "covers_manifest.json"
 SRC_ROOT_MD = SRC / "AwakeVC 3210c0891eaa43a485ab74a5d50c56a0.md"
 SRC_PAGES = SRC / "AwakeVC"
+SITE_URL = "https://awake.vc"
+OG_IMAGE_SRC = ROOT / "assets" / "images" / "og-awakevc.png"
+OG_IMAGE_PATH = "images/og-awakevc.png"
+OG_IMAGE_ALT = "AwakeVC venture studio network visual with luminous AI-native venture pathways."
 
 # ---------------------------------------------------------------------------
 # Site structure — the 10 "Meta" groupings from the Notion index, plus their
@@ -68,9 +72,10 @@ FOOTER_HTML = """
 """
 
 NAV_ITEMS = [
-    ("About",     "about"),
-    ("Protocols", "protocols"),
-    ("Team",      "team"),
+    ("Studio",   "#studio"),
+    ("Ventures", "#ventures"),
+    ("Library",  "#library"),
+    ("Team",     "team"),
 ]
 
 EXCLUDED_SLUGS = {
@@ -491,6 +496,23 @@ BASE_HTML = """<!doctype html>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{title}</title>
   <meta name="description" content="{description}">
+  <link rel="canonical" href="{canonical_url}">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="AwakeVC">
+  <meta property="og:title" content="{title}">
+  <meta property="og:description" content="{description}">
+  <meta property="og:url" content="{canonical_url}">
+  <meta property="og:image" content="{og_image_url}">
+  <meta property="og:image:secure_url" content="{og_image_url}">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="{og_image_alt}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{title}">
+  <meta name="twitter:description" content="{description}">
+  <meta name="twitter:image" content="{og_image_url}">
+  <meta name="twitter:image:alt" content="{og_image_alt}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -521,9 +543,8 @@ BASE_HTML = """<!doctype html>
 def nav_html(pages: dict[str, Page], home_rel: str, page_rel_prefix: str) -> str:
     items: list[str] = []
     for label, slug in NAV_ITEMS:
-        # Re-point "About" to home.
-        if slug == "about":
-            href = home_rel
+        if slug.startswith("#"):
+            href = f"{home_rel}{slug}"
         else:
             href = f"{page_rel_prefix}{slug}.html"
         items.append(f'<a href="{href}">{label}</a>')
@@ -531,7 +552,8 @@ def nav_html(pages: dict[str, Page], home_rel: str, page_rel_prefix: str) -> str
 
 
 def render_page_shell(title: str, description: str, content: str,
-                       pages: dict[str, Page], is_home: bool) -> str:
+                       pages: dict[str, Page], is_home: bool,
+                       path_rel: str = "") -> str:
     if is_home:
         css_rel = "css/styles.css"
         js_rel = "js/main.js"
@@ -547,6 +569,9 @@ def render_page_shell(title: str, description: str, content: str,
     return BASE_HTML.format(
         title=html.escape(title, quote=True),
         description=html.escape(description, quote=True),
+        canonical_url=html.escape(canonical_url(path_rel), quote=True),
+        og_image_url=html.escape(f"{SITE_URL}/{OG_IMAGE_PATH}", quote=True),
+        og_image_alt=html.escape(OG_IMAGE_ALT, quote=True),
         css_rel=css_rel,
         js_rel=js_rel,
         home_rel=home_rel,
@@ -557,38 +582,68 @@ def render_page_shell(title: str, description: str, content: str,
     )
 
 
+def canonical_url(path_rel: str = "") -> str:
+    path = path_rel.strip("/")
+    return f"{SITE_URL}/{path}" if path else f"{SITE_URL}/"
+
+
 # ---------------------------------------------------------------------------
 # Home page
 # ---------------------------------------------------------------------------
 
 HOME_HERO = """
-<section class="hero">
+<section class="hero" id="studio">
   <div class="wrap">
-    <p class="eyebrow">Awakened Value Co-creation</p>
-    <h1 class="hero-title">Protocols are <em>eating</em> venture.</h1>
+    <p class="eyebrow">Venture Studio for the Age of AI</p>
+    <h1 class="hero-title">We incubate and co-create <em>AI-native</em> ventures.</h1>
     <p class="hero-lede">
-      Awake Internet Protocols combine <strong>AI</strong> and <strong>FinTech</strong>
-      to empower <strong>decentralized private equity</strong> for the agentic economy.
-      A network of interconnected companies, co-creating value at the pace of AI.
+      AwakeVC works with founders, operators, and domain experts to turn sharp
+      theses into new companies, products, and networks built for AI-native markets.
+      We bring venture formation, product thinking, go-to-market systems, and the
+      background protocols behind awakened value co-creation.
     </p>
     <div class="hero-cta">
-      <a class="btn btn-primary" href="pages/protocols.html">Explore Protocols &rarr;</a>
+      <a class="btn btn-primary" href="mailto:info@awake.vc?subject=AwakeVC%20venture%20studio%20conversation">Start a conversation &rarr;</a>
+      <a class="btn btn-ghost" href="#library">Explore the library</a>
     </div>
   </div>
 </section>
 
-<section class="callouts">
+<section class="studio-model">
+  <div class="wrap">
+    <p class="section-eyebrow">Studio Model</p>
+    <h2 class="section-title">From thesis to venture.</h2>
+    <p class="section-lede">
+      The studio is the active layer of AwakeVC: a repeatable way to form new
+      companies around AI, fintech, commerce, decision intelligence, and networked
+      collaboration.
+    </p>
+    <div class="model-grid">
+      <div class="model-step">
+        <span class="model-kicker">01</span>
+        <h3>Incubate</h3>
+        <p>Turn market shifts, founder insight, and unresolved customer pain into focused venture concepts.</p>
+      </div>
+      <div class="model-step">
+        <span class="model-kicker">02</span>
+        <h3>Co-create</h3>
+        <p>Work hands-on with founders and operators across product, technology, positioning, and launch.</p>
+      </div>
+      <div class="model-step">
+        <span class="model-kicker">03</span>
+        <h3>Scale</h3>
+        <p>Connect ventures to ecosystem partners, distribution, capital pathways, and operating infrastructure.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="callouts venture-directions" id="ventures">
+  <div class="wrap">
+    <p class="section-eyebrow">Venture Directions</p>
+    <h2 class="section-title">Current threads we are building around.</h2>
+  </div>
   <div class="wrap callouts-grid">
-    <a class="card-link" href="https://EffectiveHumanism.org" target="_blank" rel="noopener">
-      <span class="card-label">Worldview</span>
-      <span class="card-title">Effective Humanism</span>
-      <span class="card-desc">Awakened Value Co-creation as a practice.</span>
-    </a>
-    <a class="card-link" href="https://BookOfAgents.com" target="_blank" rel="noopener">
-      <span class="card-label">Writing</span>
-      <span class="card-title">Book of Agents</span>
-      <span class="card-desc">Building Intergraph.ai &mdash; stay tuned.</span>
-    </a>
     <a class="card-link" href="https://Coselling.ai" target="_blank" rel="noopener">
       <span class="card-label">Venture</span>
       <span class="card-title">Coselling.ai</span>
@@ -609,6 +664,16 @@ HOME_HERO = """
       <span class="card-title">Commerce of Agents</span>
       <span class="card-desc">A new economic model for AI-native markets</span>
     </a>
+    <a class="card-link" href="https://BookOfAgents.com" target="_blank" rel="noopener">
+      <span class="card-label">Writing</span>
+      <span class="card-title">Book of Agents</span>
+      <span class="card-desc">Building Intergraph.ai &mdash; stay tuned.</span>
+    </a>
+    <a class="card-link" href="https://EffectiveHumanism.org" target="_blank" rel="noopener">
+      <span class="card-label">Worldview</span>
+      <span class="card-title">Effective Humanism</span>
+      <span class="card-desc">Awakened Value Co-creation as a practice.</span>
+    </a>
   </div>
 </section>
 """
@@ -619,15 +684,15 @@ def home_content(pages: dict[str, Page], covers: dict | None = None) -> str:
     parts = [HOME_HERO]
 
     parts.append("""
-<section class="multiverse">
+<section class="multiverse" id="library">
   <div class="wrap">
-    <p class="section-eyebrow">The Awake Multiverse</p>
-    <h2 class="section-title">A whirlwind tour.</h2>
+    <p class="section-eyebrow">Background Library</p>
+    <h2 class="section-title">The theory behind the studio.</h2>
     <p class="section-lede">
-      A compendium of design constraints, market realities, philosophy, and methodology
-      that together combine to form the foundation for the ecosystem powered by
-      Awake Internet Protocols. If you read it all, you may find a few things you had
-      not considered before.
+      The existing AwakeVC corpus now lives as supporting context: theory,
+      protocols, worldview, market exploration, and educational material behind
+      the venture studio model. It is here for founders and collaborators who want
+      the deeper map.
     </p>
   </div>
 </section>
@@ -762,7 +827,7 @@ def build():
 <main class="page-main">
   {cover_html}
   <div class="wrap narrow">
-    <p class="breadcrumb"><a href="../index.html">&larr; Awake Multiverse</a></p>
+    <p class="breadcrumb"><a href="../index.html#library">&larr; Background Library</a></p>
     <article class="prose">
       <h1 class="page-title{' with-icon' if icon_file else ''}">{title_inner}</h1>
       {body_html}
@@ -783,13 +848,14 @@ def build():
             content=content,
             pages=pages,
             is_home=False,
+            path_rel=f"pages/{slug}.html",
         )
         (DST / "pages" / f"{slug}.html").write_text(html_out, encoding="utf-8")
 
     # Render home.
     home_html = render_page_shell(
-        title="AwakeVC · Because Protocols Are Eating Venture",
-        description="Awake Internet Protocols combine AI and FinTech to empower decentralized private equity for the agentic economy.",
+        title="AwakeVC · Venture Studio for the Age of AI",
+        description="AwakeVC incubates and co-creates AI-native ventures with founders, operators, and domain experts.",
         content=home_content(pages, covers),
         pages=pages,
         is_home=True,
@@ -797,6 +863,9 @@ def build():
     (DST / "index.html").write_text(home_html, encoding="utf-8")
 
     # Static assets.
+    if OG_IMAGE_SRC.exists():
+        (DST / "images").mkdir(exist_ok=True)
+        shutil.copy2(OG_IMAGE_SRC, DST / OG_IMAGE_PATH)
     (DST / "css" / "styles.css").write_text(STYLES, encoding="utf-8")
     (DST / "js" / "main.js").write_text(MAIN_JS, encoding="utf-8")
     (DST / ".nojekyll").write_text("", encoding="utf-8")
@@ -972,8 +1041,53 @@ a:hover { text-decoration: underline; text-decoration-thickness: 1.5px; text-und
 }
 .btn-ghost:hover { border-color: var(--ink); text-decoration: none; }
 
+/* ---------- Studio model ---------- */
+.studio-model {
+  padding: 76px 0 64px;
+  background: var(--surface);
+  border-top: 1px solid var(--line-soft);
+  border-bottom: 1px solid var(--line-soft);
+}
+.studio-model .section-lede { margin-bottom: 34px; }
+.model-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+.model-step {
+  min-height: 230px;
+  padding: 26px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--bg);
+}
+.model-kicker {
+  display: block;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  color: var(--accent);
+  margin-bottom: 24px;
+}
+.model-step h3 {
+  font-family: var(--serif);
+  font-size: 27px;
+  font-weight: 600;
+  line-height: 1.15;
+  margin: 0 0 12px;
+}
+.model-step p {
+  color: var(--ink-soft);
+  font-size: 15px;
+  line-height: 1.55;
+  margin: 0;
+}
+
 /* ---------- Callout cards (home) ---------- */
 .callouts { padding: 48px 0 24px; }
+.venture-directions { padding: 78px 0 36px; }
+.venture-directions .section-title { max-width: 24ch; }
+.venture-directions .callouts-grid { margin-top: 30px; }
 .callouts-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -1039,6 +1153,11 @@ a:hover { text-decoration: underline; text-decoration-thickness: 1.5px; text-und
   color: var(--ink-soft);
   max-width: 66ch;
   margin: 0;
+}
+#studio,
+#ventures,
+#library {
+  scroll-margin-top: 84px;
 }
 
 /* ---------- Meta blocks ---------- */
@@ -1286,12 +1405,18 @@ a:hover { text-decoration: underline; text-decoration-thickness: 1.5px; text-und
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
   .callouts-grid { grid-template-columns: repeat(2, 1fr); }
+  .model-grid { grid-template-columns: 1fr; }
+  .model-step { min-height: 0; }
   .metas .wrap { grid-template-columns: 1fr; gap: 20px; }
 }
 @media (max-width: 720px) {
   body { font-size: 16px; }
   .hero { padding: 60px 0 48px; }
   .hero-lede { font-size: 17px; }
+  .studio-model { padding: 56px 0 48px; }
+  .venture-directions { padding: 56px 0 28px; }
+  .callouts-grid { grid-template-columns: 1fr; }
+  .model-step { padding: 22px; }
   .site-nav {
     position: absolute;
     top: 64px;

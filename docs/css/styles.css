@@ -161,8 +161,53 @@ a:hover { text-decoration: underline; text-decoration-thickness: 1.5px; text-und
 }
 .btn-ghost:hover { border-color: var(--ink); text-decoration: none; }
 
+/* ---------- Studio model ---------- */
+.studio-model {
+  padding: 76px 0 64px;
+  background: var(--surface);
+  border-top: 1px solid var(--line-soft);
+  border-bottom: 1px solid var(--line-soft);
+}
+.studio-model .section-lede { margin-bottom: 34px; }
+.model-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+.model-step {
+  min-height: 230px;
+  padding: 26px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--bg);
+}
+.model-kicker {
+  display: block;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  color: var(--accent);
+  margin-bottom: 24px;
+}
+.model-step h3 {
+  font-family: var(--serif);
+  font-size: 27px;
+  font-weight: 600;
+  line-height: 1.15;
+  margin: 0 0 12px;
+}
+.model-step p {
+  color: var(--ink-soft);
+  font-size: 15px;
+  line-height: 1.55;
+  margin: 0;
+}
+
 /* ---------- Callout cards (home) ---------- */
 .callouts { padding: 48px 0 24px; }
+.venture-directions { padding: 78px 0 36px; }
+.venture-directions .section-title { max-width: 24ch; }
+.venture-directions .callouts-grid { margin-top: 30px; }
 .callouts-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -228,6 +273,11 @@ a:hover { text-decoration: underline; text-decoration-thickness: 1.5px; text-und
   color: var(--ink-soft);
   max-width: 66ch;
   margin: 0;
+}
+#studio,
+#ventures,
+#library {
+  scroll-margin-top: 84px;
 }
 
 /* ---------- Meta blocks ---------- */
@@ -475,12 +525,18 @@ a:hover { text-decoration: underline; text-decoration-thickness: 1.5px; text-und
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
   .callouts-grid { grid-template-columns: repeat(2, 1fr); }
+  .model-grid { grid-template-columns: 1fr; }
+  .model-step { min-height: 0; }
   .metas .wrap { grid-template-columns: 1fr; gap: 20px; }
 }
 @media (max-width: 720px) {
   body { font-size: 16px; }
   .hero { padding: 60px 0 48px; }
   .hero-lede { font-size: 17px; }
+  .studio-model { padding: 56px 0 48px; }
+  .venture-directions { padding: 56px 0 28px; }
+  .callouts-grid { grid-template-columns: 1fr; }
+  .model-step { padding: 22px; }
   .site-nav {
     position: absolute;
     top: 64px;
