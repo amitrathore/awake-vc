@@ -64,9 +64,7 @@ FOOTER_HTML = """
     <div class="footer-brand">
       <a href="{home}" class="brand-mark">awake<span class="brand-dot">.</span>vc</a>
       <p class="footer-tag">Because Protocols Are Eating Venture.</p>
-    </div>
-    <div class="footer-meta">
-      <p>San Mateo, CA &middot; <a href="tel:+16509187312">+1&nbsp;650&nbsp;918&nbsp;7312</a> &middot; <a href="{contact_href}">Co-create with AwakeVC</a></p>
+      <p>San Mateo, CA &middot; <a href="tel:+16509187312">+1&nbsp;650&nbsp;918&nbsp;7312</a> &middot; <a href="mailto:info@awake.vc">info@awake.vc</a></p>
     </div>
   </div>
 </footer>
@@ -561,14 +559,12 @@ def render_page_shell(title: str, description: str, content: str,
         js_rel = "js/main.js"
         home_rel = "index.html"
         page_rel_prefix = "pages/"
-        contact_href = "pages/co-create.html"
         body_class = "home"
     else:
         css_rel = "../css/styles.css"
         js_rel = "../js/main.js"
         home_rel = "../index.html"
         page_rel_prefix = ""
-        contact_href = "co-create.html"
         body_class = "page"
     return BASE_HTML.format(
         title=html.escape(title, quote=True),
@@ -582,7 +578,7 @@ def render_page_shell(title: str, description: str, content: str,
         body_class=body_class,
         nav_links=nav_html(pages, home_rel, page_rel_prefix),
         content=content,
-        footer=FOOTER_HTML.format(home=home_rel, contact_href=contact_href),
+        footer=FOOTER_HTML.format(home=home_rel),
     )
 
 
@@ -716,10 +712,9 @@ def home_content(pages: dict[str, Page], covers: dict | None = None) -> str:
     <p class="section-eyebrow">Thesis</p>
     <h2 class="section-title">The theory behind the studio.</h2>
     <p class="section-lede">
-      The existing AwakeVC corpus now lives as supporting context: theory,
-      protocols, worldview, market exploration, and educational material behind
-      the venture studio model. It is here for founders and collaborators who want
-      the deeper map.
+      The AwakeVC thesis connects protocols, markets, identity, capital, media,
+      and human agency into a practical map for co-creating AI-native ventures.
+      Start here when you want the deeper logic behind the studio.
     </p>
   </div>
 </section>
@@ -748,6 +743,23 @@ def home_content(pages: dict[str, Page], covers: dict | None = None) -> str:
         parts.append('  </ul>')
         parts.append('</div>')
     parts.append('</div></section>')
+
+    parts.append("""
+<section class="engage-cta">
+  <div class="wrap">
+    <p class="section-eyebrow">Co-create Value</p>
+    <h2 class="section-title">Bring us the signal you cannot ignore.</h2>
+    <p class="section-lede">
+      If you see a new market forming, a business that wants to transform, a
+      community ready to build, or a career chapter that needs a larger arena,
+      start the enquiry and tell us what you want to co-create.
+    </p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="pages/co-create.html">Start a co-creation enquiry &rarr;</a>
+    </div>
+  </div>
+</section>
+""")
 
     return "\n".join(parts)
 
@@ -1244,7 +1256,7 @@ a:hover { text-decoration: underline; text-decoration-thickness: 1.5px; text-und
 }
 
 /* ---------- Meta blocks ---------- */
-.metas { padding: 28px 0 120px; }
+.metas { padding: 28px 0 84px; }
 .metas .wrap {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -1311,6 +1323,15 @@ a:hover { text-decoration: underline; text-decoration-thickness: 1.5px; text-und
   color: var(--accent-ink);
   text-decoration: none;
 }
+
+/* ---------- Final CTA ---------- */
+.engage-cta {
+  padding: 76px 0 88px;
+  background: var(--surface);
+  border-top: 1px solid var(--line-soft);
+}
+.engage-cta .section-title { max-width: 22ch; }
+.engage-cta .section-lede { margin-bottom: 30px; }
 
 /* ---------- Cover hero ---------- */
 .cover-hero {
@@ -1505,10 +1526,13 @@ a:hover { text-decoration: underline; text-decoration-thickness: 1.5px; text-und
   margin: 6px 0 0;
   font-size: 14px;
 }
-.footer-meta { text-align: right; font-size: 14px; color: var(--ink-soft); }
-.footer-meta p { margin: 0 0 6px; }
-.footer-meta a { color: var(--ink-soft); }
-.footer-meta a:hover { color: var(--accent-ink); }
+.footer-brand p:not(.footer-tag) {
+  margin: 8px 0 0;
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+.footer-brand p:not(.footer-tag) a { color: var(--ink-soft); }
+.footer-brand p:not(.footer-tag) a:hover { color: var(--accent-ink); }
 .footer-fine { color: var(--muted); font-size: 12px; }
 
 /* ---------- Responsive ---------- */
@@ -1550,7 +1574,6 @@ a:hover { text-decoration: underline; text-decoration-thickness: 1.5px; text-und
   }
   .nav-toggle { display: block; }
   .site-footer .wrap { flex-direction: column; }
-  .footer-meta { text-align: left; }
   .prose { font-size: 17px; }
   .page-main { padding: 32px 0 72px; }
   .co-create-main { padding: 0; }
