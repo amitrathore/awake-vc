@@ -72,7 +72,7 @@ FOOTER_HTML = """
 
 NAV_ITEMS = [
     ("Studio",   "#studio"),
-    ("Ventures", "#ventures"),
+    ("Themes",   "#themes"),
     ("Writing",  "#writing"),
     ("Thesis",   "#thesis"),
     ("Team",     "team"),
@@ -638,9 +638,9 @@ HOME_HERO = f"""
   </div>
 </section>
 
-<section class="callouts venture-directions" id="ventures">
+<section class="callouts venture-themes" id="themes">
   <div class="wrap">
-    <p class="section-eyebrow">Venture Directions</p>
+    <p class="section-eyebrow">Venture Themes</p>
     <h2 class="section-title">Current threads we are building around.</h2>
   </div>
   <div class="wrap callouts-grid">
@@ -1189,9 +1189,9 @@ a:hover { text-decoration: underline; text-decoration-thickness: 1.5px; text-und
 
 /* ---------- Callout cards (home) ---------- */
 .callouts { padding: 48px 0 24px; }
-.venture-directions { padding: 78px 0 36px; }
-.venture-directions .section-title { max-width: 24ch; }
-.venture-directions .callouts-grid { margin-top: 30px; }
+.venture-themes { padding: 78px 0 36px; }
+.venture-themes .section-title { max-width: 24ch; }
+.venture-themes .callouts-grid { margin-top: 30px; }
 .callouts-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -1259,7 +1259,7 @@ a:hover { text-decoration: underline; text-decoration-thickness: 1.5px; text-und
   margin: 0;
 }
 #studio,
-#ventures,
+#themes,
 #writing,
 #thesis {
   scroll-margin-top: 84px;
@@ -1557,7 +1557,7 @@ a:hover { text-decoration: underline; text-decoration-thickness: 1.5px; text-und
   .hero { padding: 60px 0 48px; }
   .hero-lede { font-size: 17px; }
   .studio-model { padding: 56px 0 48px; }
-  .venture-directions { padding: 56px 0 28px; }
+  .venture-themes { padding: 56px 0 28px; }
   .callouts-grid { grid-template-columns: 1fr; }
   .model-step { padding: 22px; }
   .site-nav {
