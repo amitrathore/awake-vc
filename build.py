@@ -72,8 +72,9 @@ FOOTER_HTML = """
 
 NAV_ITEMS = [
     ("Studio",   "#studio"),
-    ("Themes",   "#themes"),
-    ("Writing",  "#writing"),
+    ("Infrastructure", "#infrastructure"),
+    ("Applications", "#applications"),
+    ("Worldview", "#worldview"),
     ("Thesis",   "#thesis"),
     ("Team",     "team"),
 ]
@@ -638,83 +639,54 @@ HOME_HERO = f"""
   </div>
 </section>
 
-<section class="callouts venture-themes" id="themes">
-  <div class="wrap">
-    <p class="section-eyebrow">Venture Themes</p>
-    <h2 class="section-title">Current threads we are building around.</h2>
-  </div>
-  <div class="wrap callouts-grid">
-    <a class="card-link" href="https://opentangle.ai" target="_blank" rel="noopener">
-      <span class="card-label">Venture</span>
-      <span class="card-title">Opentangle</span>
-      <span class="card-desc">Agentic Operating System for the Knowledge Economy</span>
-    </a>
-    <a class="card-link" href="https://Coselling.ai" target="_blank" rel="noopener">
-      <span class="card-label">Venture</span>
-      <span class="card-title">Coselling.ai</span>
-      <span class="card-desc">Community commerce for brands and agents.</span>
-    </a>
-    <a class="card-link" href="https://OutcomeMachines.com" target="_blank" rel="noopener">
-      <span class="card-label">Venture</span>
-      <span class="card-title">Outcome Machines</span>
-      <span class="card-desc">Decision Intelligence for the Age of AI</span>
-    </a>
-    <a class="card-link" href="https://cofounder.community" target="_blank" rel="noopener">
-      <span class="card-label">Future of Work</span>
-      <span class="card-title">Cofounder</span>
-      <span class="card-desc">Building with cofounders around the world</span>
-    </a>
-    <a class="card-link" href="https://commerceofagents.com" target="_blank" rel="noopener">
-      <span class="card-label">Age of AI</span>
-      <span class="card-title">Commerce of Agents</span>
-      <span class="card-desc">A new economic model for AI-native markets</span>
-    </a>
-  </div>
-</section>
-
-<section class="callouts writing-section" id="writing">
-  <div class="wrap">
-    <p class="section-eyebrow">Writing</p>
-    <h2 class="section-title">Books, essays, and field notes.</h2>
-    <p class="section-lede">
-      AwakeVC co-creates writing around AI-native venture building, awakened value
-      co-creation, human agency, and the operating ideas behind new markets.
-    </p>
-  </div>
-  <div class="wrap callouts-grid">
-    <a class="card-link" href="https://outcomeering.com" target="_blank" rel="noopener">
-      <span class="card-label">Book</span>
-      <span class="card-title">Outcomeering</span>
-      <span class="card-desc">The discipline of engineering outcomes</span>
-    </a>
-    <a class="card-link" href="https://BookOfAgents.com" target="_blank" rel="noopener">
-      <span class="card-label">Book</span>
-      <span class="card-title">Book of Agents</span>
-      <span class="card-desc">Building opentangle.ai &mdash; stay tuned.</span>
-    </a>
-    <a class="card-link" href="pages/blog.html">
-      <span class="card-label">Blog</span>
-      <span class="card-title">AwakeVC Blog</span>
-      <span class="card-desc">Field notes from the AwakeVC thesis and venture studio.</span>
-    </a>
-    <a class="card-link" href="https://EffectiveHumanism.org" target="_blank" rel="noopener">
-      <span class="card-label">Worldview</span>
-      <span class="card-title">Effective Humanism</span>
-      <span class="card-desc">Awakened Value Co-creation as a practice.</span>
-    </a>
-    <a class="card-link" href="https://TheFractals.co" target="_blank" rel="noopener">
-      <span class="card-label">Practice</span>
-      <span class="card-title">The Fractals</span>
-      <span class="card-desc">Radical entrepreneurship, clarity, and agency for the age of AI.</span>
-    </a>
-  </div>
-</section>
 """
+
+HOME_SECTIONS = [
+    ("Infrastructure", "infrastructure", "The foundations for new networks, markets, and intelligence.", [
+        ("Opentangle", "https://opentangle.ai"),
+        ("Coselling.ai", "https://coselling.ai"),
+        ("Yvatar", None),
+        ("Datacentriq", "https://datacentriq.co"),
+        ("Community Markets", None),
+    ]),
+    ("Applications", "applications", "Experiences and ventures built on those foundations.", [
+        ("Agents of Mind", None),
+        ("The Js", None),
+        ("AltHealth", None),
+        ("Agents of Wine", None),
+        ("Highway One", None),
+    ]),
+    ("Worldview", "worldview", "Books and projects that shape the way we build.", [
+        ("Effective Humanism", "https://effectivehumanism.org"),
+        ("Awake Ventures", "https://awake.ventures"),
+        ("Book of Agents", "https://bookofagents.com"),
+        ("Outcomeering", "https://outcomeering.com"),
+        ("The Fractals", "https://thefractals.co"),
+    ]),
+]
+
+
+def home_sections() -> str:
+    parts = []
+    for index, (title, section_id, description, projects) in enumerate(HOME_SECTIONS, start=1):
+        parts.append(f'<section class="project-section" id="{section_id}"><div class="wrap">')
+        parts.append(f'  <p class="section-eyebrow">{index:02d} / 03</p>')
+        parts.append(f'  <h2 class="section-title">{html.escape(title)}</h2>')
+        parts.append(f'  <p class="section-lede">{html.escape(description)}</p>')
+        parts.append('  <div class="project-grid">')
+        for name, url in projects:
+            label = f'<span class="project-name">{html.escape(name)}</span>'
+            if url:
+                parts.append(f'    <a class="project-card" href="{html.escape(url, quote=True)}" target="_blank" rel="noopener">{label}</a>')
+            else:
+                parts.append(f'    <div class="project-card">{label}</div>')
+        parts.append('  </div></div></section>')
+    return "\n".join(parts)
 
 
 def home_content(pages: dict[str, Page], covers: dict | None = None) -> str:
     covers = covers or {}
-    parts = [HOME_HERO]
+    parts = [HOME_HERO, home_sections()]
 
     parts.append("""
 <section class="multiverse" id="thesis">
@@ -1187,50 +1159,39 @@ a:hover { text-decoration: underline; text-decoration-thickness: 1.5px; text-und
   margin: 0;
 }
 
-/* ---------- Callout cards (home) ---------- */
-.callouts { padding: 48px 0 24px; }
-.venture-themes { padding: 78px 0 36px; }
-.venture-themes .section-title { max-width: 24ch; }
-.venture-themes .callouts-grid { margin-top: 30px; }
-.callouts-grid {
+/* ---------- Project sections (home) ---------- */
+.project-section { padding: 72px 0 20px; scroll-margin-top: 72px; }
+.project-section + .project-section { padding-top: 56px; }
+.project-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 16px;
+  margin-top: 30px;
 }
-.card-link {
+.project-card {
   display: flex;
-  flex-direction: column;
-  gap: 6px;
-  padding: 22px 22px 26px;
+  align-items: flex-end;
+  min-height: 132px;
+  padding: 22px;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   color: var(--ink);
+}
+a.project-card {
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
-.card-link:hover {
+a.project-card:hover {
   text-decoration: none;
   transform: translateY(-2px);
   border-color: var(--accent);
   box-shadow: var(--shadow-md);
 }
-.card-label {
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-.card-title {
+.project-name {
   font-family: var(--serif);
   font-size: 22px;
   font-weight: 600;
   line-height: 1.2;
-}
-.card-desc {
-  color: var(--ink-soft);
-  font-size: 14px;
-  line-height: 1.5;
 }
 
 /* ---------- Multiverse section ---------- */
@@ -1547,7 +1508,7 @@ a:hover { text-decoration: underline; text-decoration-thickness: 1.5px; text-und
 
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
-  .callouts-grid { grid-template-columns: repeat(2, 1fr); }
+  .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .model-grid { grid-template-columns: 1fr; }
   .model-step { min-height: 0; }
   .metas .wrap { grid-template-columns: 1fr; gap: 20px; }
@@ -1557,8 +1518,10 @@ a:hover { text-decoration: underline; text-decoration-thickness: 1.5px; text-und
   .hero { padding: 60px 0 48px; }
   .hero-lede { font-size: 17px; }
   .studio-model { padding: 56px 0 48px; }
-  .venture-themes { padding: 56px 0 28px; }
-  .callouts-grid { grid-template-columns: 1fr; }
+  .project-section { padding: 56px 0 16px; }
+  .project-section + .project-section { padding-top: 40px; }
+  .project-grid { grid-template-columns: 1fr; }
+  .project-card { min-height: 90px; }
   .model-step { padding: 22px; }
   .site-nav {
     position: absolute;

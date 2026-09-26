@@ -203,50 +203,39 @@ a:hover { text-decoration: underline; text-decoration-thickness: 1.5px; text-und
   margin: 0;
 }
 
-/* ---------- Callout cards (home) ---------- */
-.callouts { padding: 48px 0 24px; }
-.venture-themes { padding: 78px 0 36px; }
-.venture-themes .section-title { max-width: 24ch; }
-.venture-themes .callouts-grid { margin-top: 30px; }
-.callouts-grid {
+/* ---------- Project sections (home) ---------- */
+.project-section { padding: 72px 0 20px; scroll-margin-top: 72px; }
+.project-section + .project-section { padding-top: 56px; }
+.project-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 16px;
+  margin-top: 30px;
 }
-.card-link {
+.project-card {
   display: flex;
-  flex-direction: column;
-  gap: 6px;
-  padding: 22px 22px 26px;
+  align-items: flex-end;
+  min-height: 132px;
+  padding: 22px;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   color: var(--ink);
+}
+a.project-card {
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
-.card-link:hover {
+a.project-card:hover {
   text-decoration: none;
   transform: translateY(-2px);
   border-color: var(--accent);
   box-shadow: var(--shadow-md);
 }
-.card-label {
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-.card-title {
+.project-name {
   font-family: var(--serif);
   font-size: 22px;
   font-weight: 600;
   line-height: 1.2;
-}
-.card-desc {
-  color: var(--ink-soft);
-  font-size: 14px;
-  line-height: 1.5;
 }
 
 /* ---------- Multiverse section ---------- */
@@ -563,7 +552,7 @@ a:hover { text-decoration: underline; text-decoration-thickness: 1.5px; text-und
 
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
-  .callouts-grid { grid-template-columns: repeat(2, 1fr); }
+  .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .model-grid { grid-template-columns: 1fr; }
   .model-step { min-height: 0; }
   .metas .wrap { grid-template-columns: 1fr; gap: 20px; }
@@ -573,8 +562,10 @@ a:hover { text-decoration: underline; text-decoration-thickness: 1.5px; text-und
   .hero { padding: 60px 0 48px; }
   .hero-lede { font-size: 17px; }
   .studio-model { padding: 56px 0 48px; }
-  .venture-themes { padding: 56px 0 28px; }
-  .callouts-grid { grid-template-columns: 1fr; }
+  .project-section { padding: 56px 0 16px; }
+  .project-section + .project-section { padding-top: 40px; }
+  .project-grid { grid-template-columns: 1fr; }
+  .project-card { min-height: 90px; }
   .model-step { padding: 22px; }
   .site-nav {
     position: absolute;
