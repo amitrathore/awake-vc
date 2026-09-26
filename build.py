@@ -644,9 +644,9 @@ HOME_HERO = f"""
     <h2 class="section-title">Current threads we are building around.</h2>
   </div>
   <div class="wrap callouts-grid">
-    <a class="card-link" href="https://Intergraph.ai" target="_blank" rel="noopener">
+    <a class="card-link" href="https://opentangle.ai" target="_blank" rel="noopener">
       <span class="card-label">Venture</span>
-      <span class="card-title">Intergraph</span>
+      <span class="card-title">Opentangle</span>
       <span class="card-desc">Agentic Operating System for the Knowledge Economy</span>
     </a>
     <a class="card-link" href="https://Coselling.ai" target="_blank" rel="noopener">
@@ -690,7 +690,7 @@ HOME_HERO = f"""
     <a class="card-link" href="https://BookOfAgents.com" target="_blank" rel="noopener">
       <span class="card-label">Book</span>
       <span class="card-title">Book of Agents</span>
-      <span class="card-desc">Building Intergraph.ai &mdash; stay tuned.</span>
+      <span class="card-desc">Building opentangle.ai &mdash; stay tuned.</span>
     </a>
     <a class="card-link" href="pages/blog.html">
       <span class="card-label">Blog</span>
