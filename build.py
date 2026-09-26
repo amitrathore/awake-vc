@@ -643,25 +643,25 @@ HOME_HERO = f"""
 
 HOME_SECTIONS = [
     ("Infrastructure", "infrastructure", "The foundations for new networks, markets, and intelligence.", [
-        ("Opentangle", "https://opentangle.ai"),
-        ("Coselling.ai", "https://coselling.ai"),
-        ("Yvatar", None),
-        ("Datacentriq", "https://datacentriq.co"),
-        ("Community Markets", None),
+        ("Opentangle", "Agentic Operating System for the Knowledge Economy", "https://opentangle.ai"),
+        ("Coselling.ai", "Community commerce for brands and agents.", "https://coselling.ai"),
+        ("Yvatar", "Build a persistent AI character with a face, voice, lore, and creative life of its own.", "https://yvatar.com"),
+        ("Datacentriq", "Decision intelligence that turns enterprise data into measurable outcomes.", "https://datacentriq.co"),
+        ("Community Markets", "Local markets for chambers, merchants, and community builders.", "https://community.markets"),
     ]),
     ("Applications", "applications", "Experiences and ventures built on those foundations.", [
-        ("Agents of Mind", None),
-        ("The Js", None),
-        ("AltHealth", None),
-        ("Agents of Wine", None),
-        ("Highway One", None),
+        ("Agents of Mind", "Independent AI tools, fresh perspectives, and a marketplace for builders.", "https://www.agentsofmind.com"),
+        ("The Js", "A living music universe where fans and creators co-create culture.", "https://www.jointhejs.com"),
+        ("AltHealth", "Wellness commerce powered by trusted practitioner recommendations.", "https://www.althealth.me"),
+        ("Agents of Wine", "AI-powered advocates who turn tasting rooms into always-on sales channels.", "https://agentsofwine.com"),
+        ("Highway One", "A collector-vehicle marketplace with searchable showrooms and an AI concierge.", "https://highwayone.autos"),
     ]),
     ("Worldview", "worldview", "Books and projects that shape the way we build.", [
-        ("Effective Humanism", "https://effectivehumanism.org"),
-        ("Awake Ventures", "https://awake.ventures"),
-        ("Book of Agents", "https://bookofagents.com"),
-        ("Outcomeering", "https://outcomeering.com"),
-        ("The Fractals", "https://thefractals.co"),
+        ("Effective Humanism", "Awakened Value Co-creation as a practice.", "https://effectivehumanism.org"),
+        ("Awake Ventures", "A social market network for the venture ecosystem.", "https://awake.ventures"),
+        ("Book of Agents", "Building opentangle.ai — stay tuned.", "https://bookofagents.com"),
+        ("Outcomeering", "The discipline of engineering outcomes", "https://outcomeering.com"),
+        ("The Fractals", "Radical entrepreneurship, clarity, and agency for the age of AI.", "https://thefractals.co"),
     ]),
 ]
 
@@ -674,12 +674,12 @@ def home_sections() -> str:
         parts.append(f'  <h2 class="section-title">{html.escape(title)}</h2>')
         parts.append(f'  <p class="section-lede">{html.escape(description)}</p>')
         parts.append('  <div class="project-grid">')
-        for name, url in projects:
-            label = f'<span class="project-name">{html.escape(name)}</span>'
-            if url:
-                parts.append(f'    <a class="project-card" href="{html.escape(url, quote=True)}" target="_blank" rel="noopener">{label}</a>')
-            else:
-                parts.append(f'    <div class="project-card">{label}</div>')
+        for name, blurb, url in projects:
+            parts.append(
+                f'    <a class="project-card" href="{html.escape(url, quote=True)}" target="_blank" rel="noopener">'
+                f'<span class="project-name">{html.escape(name)}</span>'
+                f'<span class="project-desc">{html.escape(blurb)}</span></a>'
+            )
         parts.append('  </div></div></section>')
     return "\n".join(parts)
 
@@ -1164,24 +1164,24 @@ a:hover { text-decoration: underline; text-decoration-thickness: 1.5px; text-und
 .project-section + .project-section { padding-top: 56px; }
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
   margin-top: 30px;
 }
 .project-card {
   display: flex;
-  align-items: flex-end;
-  min-height: 132px;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  min-height: 170px;
   padding: 22px;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   color: var(--ink);
-}
-a.project-card {
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
-a.project-card:hover {
+.project-card:hover {
   text-decoration: none;
   transform: translateY(-2px);
   border-color: var(--accent);
@@ -1192,6 +1192,11 @@ a.project-card:hover {
   font-size: 22px;
   font-weight: 600;
   line-height: 1.2;
+}
+.project-desc {
+  color: var(--ink-soft);
+  font-size: 14px;
+  line-height: 1.5;
 }
 
 /* ---------- Multiverse section ---------- */

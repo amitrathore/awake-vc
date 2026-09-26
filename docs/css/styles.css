@@ -208,24 +208,24 @@ a:hover { text-decoration: underline; text-decoration-thickness: 1.5px; text-und
 .project-section + .project-section { padding-top: 56px; }
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
   margin-top: 30px;
 }
 .project-card {
   display: flex;
-  align-items: flex-end;
-  min-height: 132px;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  min-height: 170px;
   padding: 22px;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   color: var(--ink);
-}
-a.project-card {
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
-a.project-card:hover {
+.project-card:hover {
   text-decoration: none;
   transform: translateY(-2px);
   border-color: var(--accent);
@@ -236,6 +236,11 @@ a.project-card:hover {
   font-size: 22px;
   font-weight: 600;
   line-height: 1.2;
+}
+.project-desc {
+  color: var(--ink-soft);
+  font-size: 14px;
+  line-height: 1.5;
 }
 
 /* ---------- Multiverse section ---------- */
