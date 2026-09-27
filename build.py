@@ -656,7 +656,7 @@ HOME_SECTIONS = [
         ("Agents of Wine", "AI-powered advocates who turn tasting rooms into always-on sales channels.", "https://agentsofwine.com"),
         ("Highway One", "A collector-vehicle marketplace with searchable showrooms and an AI concierge.", "https://highwayone.autos"),
     ]),
-    ("Worldview", "worldview", "Books and projects that shape the way we build.", [
+    ("Worldview", "worldview", "Books and explorations on the world behind our world.", [
         ("Effective Humanism", "Awakened Value Co-creation as a practice.", "https://effectivehumanism.org"),
         ("Awake Ventures", "A social market network for the venture ecosystem.", "https://awake.ventures"),
         ("Book of Agents", "Building opentangle.ai — stay tuned.", "https://bookofagents.com"),
