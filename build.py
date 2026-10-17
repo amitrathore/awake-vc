@@ -646,7 +646,7 @@ HOME_SECTIONS = [
         ("Opentangle", "Agentic Operating System for the Knowledge Economy", "https://opentangle.ai"),
         ("Coselling.ai", "Community commerce for brands and agents.", "https://coselling.ai"),
         ("Yvatar", "Build a persistent AI character with a face, voice, lore, and creative life of its own.", "https://yvatar.com"),
-        ("Datacentriq", "Decision intelligence that turns enterprise data into measurable outcomes.", "https://datacentriq.co"),
+        ("Outcome Machines", "Decision intelligence that turns enterprise data into measurable outcomes.", "https://outcomemachines.com"),
         ("Community Markets", "Local markets for chambers, merchants, and community builders.", "https://community.markets"),
     ]),
     ("Applications", "applications", "Experiences and ventures built on those foundations.", [
