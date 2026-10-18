@@ -24,8 +24,8 @@ SRC_PAGES = SRC / "AwakeVC"
 SITE_URL = "https://awake.vc"
 TALLY_FORM_ID = "WOX72a"
 OG_IMAGE_SRC = ROOT / "assets" / "images" / "og-awakevc.png"
-OG_IMAGE_PATH = "images/og-awakevc.png"
-OG_IMAGE_ALT = "AwakeVC venture studio network visual with luminous AI-native venture pathways."
+OG_IMAGE_PATH = "images/brand/social.png"
+OG_IMAGE_ALT = "AwakeVC — Venture Studio for the Age of AI, with the golden Painted eye logo."
 
 # ---------------------------------------------------------------------------
 # Site structure — the 10 "Meta" groupings from the Notion index, plus their
@@ -62,7 +62,7 @@ FOOTER_HTML = """
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-brand">
-      <a href="{home}" class="brand-mark">awake<span class="brand-dot">.</span>vc</a>
+      <a href="{home}" class="brand footer-lockup"><img src="{brand_path}/painted.webp" alt="" width="56" height="56"><span class="brand-mark">awake<span class="brand-dot">.</span>vc</span></a>
       <p class="footer-tag">Because Protocols Are Eating Venture.</p>
       <p>San Mateo, CA &middot; <a href="tel:+16509187312">+1&nbsp;650&nbsp;918&nbsp;7312</a> &middot; <a href="mailto:info@awake.vc">info@awake.vc</a></p>
     </div>
@@ -518,13 +518,18 @@ BASE_HTML = """<!doctype html>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{css_rel}">
+  <link rel="icon" href="{brand_path}/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="{brand_path}/favicon-32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="{brand_path}/favicon-16.png" sizes="16x16">
+  <link rel="apple-touch-icon" href="{brand_path}/apple-touch-icon.png" sizes="180x180">
 </head>
 <body class="{body_class}">
   <header class="site-header">
     <div class="wrap">
-      <a href="{home_rel}" class="brand">
-        <span class="brand-mark">awake<span class="brand-dot">.</span>vc</span>
-      </a>
+      <div class="brand-lockup">
+        <button class="brand-art" type="button" aria-label="Show AwakeVC art" hidden><img src="{brand_path}/painted.webp" alt="" width="40" height="40"></button>
+        <a href="{home_rel}" class="brand"><span class="brand-mark">awake<span class="brand-dot">.</span>vc</span></a>
+      </div>
       <nav class="site-nav">
         {nav_links}
       </nav>
@@ -535,6 +540,13 @@ BASE_HTML = """<!doctype html>
   </header>
   {content}
   {footer}
+  <dialog class="art-splash" aria-labelledby="art-edition" data-assets="{brand_path}">
+    <div class="art-splash-content">
+      <img class="art-splash-image" alt="" width="640" height="640">
+      <p id="art-edition" class="art-edition">AwakeVC art</p>
+      <button class="art-skip" type="button" autofocus>Skip <span aria-hidden="true">&rarr;</span></button>
+    </div>
+  </dialog>
   <script src="{js_rel}"></script>
 </body>
 </html>
@@ -575,11 +587,12 @@ def render_page_shell(title: str, description: str, content: str,
         og_image_alt=html.escape(OG_IMAGE_ALT, quote=True),
         css_rel=css_rel,
         js_rel=js_rel,
+        brand_path="images/brand" if is_home else "../images/brand",
         home_rel=home_rel,
         body_class=body_class,
         nav_links=nav_html(pages, home_rel, page_rel_prefix),
         content=content,
-        footer=FOOTER_HTML.format(home=home_rel),
+        footer=FOOTER_HTML.format(home=home_rel, brand_path="images/brand" if is_home else "../images/brand"),
     )
 
 
@@ -952,9 +965,10 @@ def build():
 
     # Static assets.
     shutil.copytree(ROOT / "assets" / "project-icons", DST / "images" / "project-icons")
+    shutil.copytree(ROOT / "assets" / "brand" / "web", DST / "images" / "brand")
+    # Keep previously shared image URLs available while metadata uses the new art.
     if OG_IMAGE_SRC.exists():
-        (DST / "images").mkdir(exist_ok=True)
-        shutil.copy2(OG_IMAGE_SRC, DST / OG_IMAGE_PATH)
+        shutil.copy2(OG_IMAGE_SRC, DST / "images" / "og-awakevc.png")
     (DST / "css" / "styles.css").write_text(STYLES, encoding="utf-8")
     (DST / "js" / "main.js").write_text(MAIN_JS, encoding="utf-8")
     (DST / ".nojekyll").write_text("", encoding="utf-8")
@@ -1040,6 +1054,53 @@ a:hover { text-decoration: underline; text-decoration-thickness: 1.5px; text-und
 }
 .brand:hover { text-decoration: none; }
 .brand-dot { color: var(--accent); }
+.brand-lockup, .footer-lockup { display: flex; align-items: center; gap: 10px; }
+.brand-art {
+  border: 0;
+  padding: 0;
+  background: white;
+  border-radius: 8px;
+  cursor: pointer;
+  flex: 0 0 40px;
+}
+.brand-art img, .footer-lockup img { border-radius: 8px; }
+.brand-art:focus-visible, .art-skip:focus-visible { outline: 2px solid var(--accent-ink); outline-offset: 4px; }
+.footer-lockup { width: fit-content; }
+.art-splash {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  margin: 0;
+  padding: 24px;
+  border: 0;
+  background: var(--bg);
+  color: var(--ink);
+}
+.art-splash[open] { display: grid; place-items: center; }
+.art-splash::backdrop { background: var(--bg); }
+.art-splash-content { text-align: center; }
+.art-splash-image {
+  width: min(440px, 80vw, 65vh);
+  width: min(440px, 80vw, 65svh);
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: contain;
+  background: white;
+  border: 1px solid var(--line-soft);
+  border-radius: 14px;
+}
+.art-edition { margin: 20px 0 16px; font-family: var(--mono); font-size: 12px; color: var(--ink-soft); }
+.art-skip { border: 1px solid var(--line); background: var(--surface); border-radius: 24px; padding: 10px 22px; font: 500 14px var(--sans); color: var(--ink); cursor: pointer; }
+.art-splash.is-entering .art-splash-content { animation: art-appear 180ms ease-out both; }
+.art-splash.is-closing .art-splash-content { animation: art-appear 180ms ease-in reverse both; }
+@keyframes art-appear { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .art-splash.is-entering .art-splash-content,
+  .art-splash.is-closing .art-splash-content { animation: none; }
+}
 .site-nav {
   display: flex;
   gap: 30px;
@@ -1599,6 +1660,83 @@ a:hover { text-decoration: underline; text-decoration-thickness: 1.5px; text-und
 
 
 MAIN_JS = r"""
+// Art is an optional enhancement; the document remains usable without it.
+(function () {
+  var dialog = document.querySelector('.art-splash');
+  var trigger = document.querySelector('.brand-art');
+  if (!dialog || !trigger || typeof dialog.showModal !== 'function') return;
+  var art = dialog.querySelector('.art-splash-image');
+  var caption = dialog.querySelector('.art-edition');
+  var editions = ['Dali', 'Kandinsky', 'Monet', 'Picasso', 'Warhol'];
+  var sessionKey = 'awakevc-art-seen-v1';
+  var pending = false;
+  var closeTimer;
+  var fadeTimer;
+  var loadTimer;
+  var returnFocus;
+  var previousOverflow;
+  var clickTimes = [];
+  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  trigger.hidden = false;
+
+  function closeArt() {
+    clearTimeout(closeTimer);
+    clearTimeout(fadeTimer);
+    if (dialog.open) dialog.close();
+  }
+  dialog.addEventListener('close', function () {
+    clearTimeout(closeTimer);
+    clearTimeout(fadeTimer);
+    document.body.style.overflow = previousOverflow;
+    dialog.classList.remove('is-entering', 'is-closing');
+    if (returnFocus && returnFocus.isConnected) returnFocus.focus({ preventScroll: true });
+  });
+  dialog.addEventListener('cancel', function (event) { event.preventDefault(); closeArt(); });
+  dialog.querySelector('.art-skip').addEventListener('click', closeArt);
+  dialog.addEventListener('click', function (event) { if (event.target === dialog) closeArt(); });
+
+  function showArt() {
+    if (pending || dialog.open) return;
+    pending = true;
+    var edition = editions[Math.floor(Math.random() * editions.length)];
+    var duration = 3000 + Math.random() * 4000;
+    var image = new Image();
+    function failed() { clearTimeout(loadTimer); pending = false; image.onload = image.onerror = null; }
+    image.onerror = failed;
+    loadTimer = setTimeout(failed, 8000);
+    image.onload = function () {
+      clearTimeout(loadTimer);
+      pending = false;
+      image.onload = image.onerror = null;
+      returnFocus = document.activeElement === document.body ? document.querySelector('.brand-lockup .brand') : document.activeElement;
+      art.src = image.src;
+      art.alt = 'AwakeVC eye logo, ' + edition + ' edition';
+      caption.textContent = 'AwakeVC \u00b7 ' + edition + ' edition';
+      previousOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      dialog.classList.add('is-entering');
+      dialog.showModal();
+      try { sessionStorage.setItem(sessionKey, '1'); } catch (error) { /* Manual replay still works. */ }
+      var fade = reducedMotion.matches ? 0 : 180;
+      closeTimer = setTimeout(function () {
+        dialog.classList.remove('is-entering');
+        dialog.classList.add('is-closing');
+        fadeTimer = setTimeout(closeArt, fade);
+      }, duration - fade);
+    };
+    image.src = dialog.dataset.assets + '/' + edition.toLowerCase() + '.webp';
+  }
+
+  trigger.addEventListener('click', function (event) {
+    if (event.detail === 0) { showArt(); return; }
+    var now = performance.now();
+    clickTimes = clickTimes.filter(function (time) { return now - time <= 900; });
+    clickTimes.push(now);
+    if (clickTimes.length >= 3) { clickTimes = []; showArt(); }
+  });
+  try { if (!sessionStorage.getItem(sessionKey)) showArt(); } catch (error) { /* Skip automatic art when storage is unavailable. */ }
+})();
+
 // Mobile nav toggle — tiny and dependency-free.
 (function () {
   var toggle = document.querySelector('.nav-toggle');
