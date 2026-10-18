@@ -643,11 +643,11 @@ HOME_HERO = f"""
 
 HOME_SECTIONS = [
     ("Infrastructure", "infrastructure", "The foundations for new networks, markets, and intelligence.", [
-        ("Opentangle", "Agentic Operating System for the Knowledge Economy", "https://opentangle.ai"),
+        ("Cofounder", "A community and exchange for building companies in the age of AI.", "https://cofounder.community/"),
+        ("Opentangle", "Programmable organizations where people and AI agents work together with shared memory, knowledge, and rules.", "https://opentangle.ai"),
         ("Coselling.ai", "Community commerce for brands and agents.", "https://coselling.ai"),
         ("Yvatar", "Build a persistent AI character with a face, voice, lore, and creative life of its own.", "https://yvatar.com"),
         ("Outcome Machines", "Decision intelligence that turns enterprise data into measurable outcomes.", "https://outcomemachines.com"),
-        ("Community Markets", "Local markets for chambers, merchants, and community builders.", "https://community.markets"),
     ]),
     ("Applications", "applications", "Experiences and ventures built on those foundations.", [
         ("Agents of Mind", "Independent AI tools, fresh perspectives, and a marketplace for builders.", "https://www.agentsofmind.com"),
@@ -655,6 +655,7 @@ HOME_SECTIONS = [
         ("AltHealth", "Wellness commerce powered by trusted practitioner recommendations.", "https://www.althealth.me"),
         ("Agents of Wine", "AI-powered advocates who turn tasting rooms into always-on sales channels.", "https://agentsofwine.com"),
         ("Highway One", "A collector-vehicle marketplace with searchable showrooms and an AI concierge.", "https://highwayone.autos"),
+        ("Community Markets", "Local markets for chambers, merchants, and community builders.", "https://community.markets"),
     ]),
     ("Worldview", "worldview", "Books and explorations on the world behind our world.", [
         ("Effective Humanism", "Awakened Value Co-creation as a practice.", "https://effectivehumanism.org"),
