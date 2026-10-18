@@ -231,6 +231,28 @@ a:hover { text-decoration: underline; text-decoration-thickness: 1.5px; text-und
   border-color: var(--accent);
   box-shadow: var(--shadow-md);
 }
+.project-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.project-icon {
+  flex: 0 0 32px;
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  border-radius: 6px;
+}
+.project-monogram {
+  display: grid;
+  place-items: center;
+  background: var(--bg-soft);
+  color: var(--accent-ink);
+  font-family: var(--serif);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1;
+}
 .project-name {
   font-family: var(--serif);
   font-size: 22px;

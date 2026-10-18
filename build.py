@@ -667,6 +667,17 @@ HOME_SECTIONS = [
 ]
 
 
+def project_icon(name: str) -> str:
+    icons = json.loads((ROOT / "assets" / "project-icons" / "sources.json").read_text())
+    icon = next(item for item in icons if item["name"] == name)
+    if "file" in icon:
+        return (
+            f'<img class="project-icon" src="images/project-icons/{html.escape(icon["file"], quote=True)}" '
+            'alt="" width="32" height="32" loading="lazy" decoding="async">'
+        )
+    return f'<span class="project-icon project-monogram" aria-hidden="true">{html.escape(icon["monogram"])}</span>'
+
+
 def home_sections() -> str:
     parts = []
     for index, (title, section_id, description, projects) in enumerate(HOME_SECTIONS, start=1):
@@ -678,7 +689,7 @@ def home_sections() -> str:
         for name, blurb, url in projects:
             parts.append(
                 f'    <a class="project-card" href="{html.escape(url, quote=True)}" target="_blank" rel="noopener">'
-                f'<span class="project-name">{html.escape(name)}</span>'
+                f'<span class="project-heading">{project_icon(name)}<span class="project-name">{html.escape(name)}</span></span>'
                 f'<span class="project-desc">{html.escape(blurb)}</span></a>'
             )
         parts.append('  </div></div></section>')
@@ -940,6 +951,7 @@ def build():
     (DST / "index.html").write_text(home_html, encoding="utf-8")
 
     # Static assets.
+    shutil.copytree(ROOT / "assets" / "project-icons", DST / "images" / "project-icons")
     if OG_IMAGE_SRC.exists():
         (DST / "images").mkdir(exist_ok=True)
         shutil.copy2(OG_IMAGE_SRC, DST / OG_IMAGE_PATH)
@@ -1187,6 +1199,28 @@ a:hover { text-decoration: underline; text-decoration-thickness: 1.5px; text-und
   transform: translateY(-2px);
   border-color: var(--accent);
   box-shadow: var(--shadow-md);
+}
+.project-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.project-icon {
+  flex: 0 0 32px;
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  border-radius: 6px;
+}
+.project-monogram {
+  display: grid;
+  place-items: center;
+  background: var(--bg-soft);
+  color: var(--accent-ink);
+  font-family: var(--serif);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1;
 }
 .project-name {
   font-family: var(--serif);
