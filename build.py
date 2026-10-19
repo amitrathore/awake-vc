@@ -49,10 +49,8 @@ META_SECTIONS = [
      ["Platform", "Venture", "Acceleration", "Syndication"]),
     ("Meta Vision",         "Inspiration, spirituality, energy, entrepreneurship, and nature.",
      ["Inspiration", "Spirituality", "Energy", "Entrepreneurship", "Nature"]),
-    ("Meta Awake",          "Private equity, beyond all clouds, blog, team.",
-     ["PE", "Beyond All Clouds", "Blog", "Team"]),
-    ("Meta Launch",         "Dogfooding, dragoneering, the Studio, and Disrupt.",
-     ["Dogfooding", "Dragoneering", "Studio", "Disrupt"]),
+    ("Meta Launch",         "Studio, team, dogfooding, dragoneering, and Disrupt.",
+     ["Studio", "Dogfooding", "Dragoneering", "Disrupt", "Team"]),
 ]
 
 HASH_RE = re.compile(r"\s+[0-9a-f]{32}(?:\.md)?$")
@@ -717,7 +715,7 @@ def home_content(pages: dict[str, Page], covers: dict | None = None) -> str:
 <section class="multiverse" id="thesis">
   <div class="wrap">
     <p class="section-eyebrow">Thesis</p>
-    <h2 class="section-title">The theory behind the studio.</h2>
+    <h2 class="section-title">Designing AI-native Ventures</h2>
     <p class="section-lede">
       The AwakeVC thesis connects protocols, markets, identity, capital, media,
       and human agency into a practical map for co-creating AI-native ventures.
