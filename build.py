@@ -717,7 +717,7 @@ def home_content(pages: dict[str, Page], covers: dict | None = None) -> str:
 <section class="multiverse" id="thesis">
   <div class="wrap">
     <p class="section-eyebrow">Thesis</p>
-    <h2 class="section-title">The theory behind the studio.</h2>
+    <h2 class="section-title">Designing AI-native Ventures</h2>
     <p class="section-lede">
       The AwakeVC thesis connects protocols, markets, identity, capital, media,
       and human agency into a practical map for co-creating AI-native ventures.
