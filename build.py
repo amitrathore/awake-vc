@@ -41,9 +41,12 @@ META_SECTIONS = [
      ["BankFac", "CapFac", "Exchange"]),
     ("Meta Basis",          "The building blocks: Lisp, HTTP, connections, cosellers, and the new retail.",
      ["Lisp", "HTTP", "Connections", "SaleRank", "Cosellers", "Retail 3 0",
-      "Metaverse", "Avatars", "Web2 5", "Games", "Ecosystems"]),
+      "Metaverse", "Avatars", "Web2 5", "Ecosystems"]),
+    ("Meta Agents",         "Attribution, agentic markets, Opentangle, agent-run organizations, decision intelligence, and games.",
+     ["Attribution", "Agentic Markets", "Opentangle", "Agent Run Organizations",
+      "Decision Intelligence", "Games"]),
     ("Meta Internet",       "Blockchain, crypto, Web3, DeFi, DAOs, and the MetaWeb.",
-     ["Blockchain", "Crypto", "NFTs", "Web3", "MetaWeb", "Attribution",
+     ["Blockchain", "Crypto", "NFTs", "Web3", "MetaWeb",
       "Communities", "DeFi", "DAOs"]),
     ("Meta Silicon Valley", "Platforms, ventures, acceleration, and syndication.",
      ["Platform", "Venture", "Acceleration", "Syndication"]),
@@ -69,12 +72,11 @@ FOOTER_HTML = """
 """
 
 NAV_ITEMS = [
-    ("Studio",   "#studio"),
-    ("Infrastructure", "#infrastructure"),
-    ("Applications", "#applications"),
-    ("Worldview", "#worldview"),
-    ("Thesis",   "#thesis"),
-    ("Team",     "team"),
+    ("How it works", "#how-it-works"),
+    ("Portfolio",    "#portfolio"),
+    ("Worldview",    "#worldview"),
+    ("Thesis",       "#thesis"),
+    ("Team",         "team"),
 ]
 
 EXCLUDED_SLUGS = {
@@ -779,12 +781,11 @@ def co_create_content() -> str:
   <section class="co-create-intro">
     <div class="wrap narrow">
       <p class="breadcrumb"><a href="../index.html">&larr; AwakeVC</a></p>
-      <p class="section-eyebrow">Co-create With AwakeVC</p>
-      <h1 class="page-title">Tell us what you want to build.</h1>
+      <p class="section-eyebrow">AwakeVC</p>
+      <h1 class="page-title">Co-found with me.</h1>
       <p class="section-lede">
-        This enquiry is for corporates, founders, SMEs, SMBs, artists, creators,
-        managers, career transitioners, and first-time job seekers exploring new
-        startups and shared-value ventures for the age of AI.
+        I'm Amit Rathore. If you know a domain that AI is reshaping and you can see
+        the company that should exist — fill in the form below and let's talk.
       </p>
     </div>
   </section>
@@ -942,8 +943,8 @@ def build():
 
     # Render co-creation enquiry page.
     co_create_html = render_page_shell(
-        title="Co-create With AwakeVC · Venture Studio for the Age of AI",
-        description="Tell AwakeVC what you want to build, transform, or co-create through new AI-native ventures.",
+        title="Co-found With Me · AwakeVC",
+        description="I'm Amit Rathore. If you know a domain that AI is reshaping and you can see the company that should exist — let's build it together.",
         content=co_create_content(),
         pages=pages,
         is_home=False,
