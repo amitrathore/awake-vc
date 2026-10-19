@@ -50,7 +50,7 @@ META_SECTIONS = [
     ("Meta Vision",         "Inspiration, spirituality, energy, entrepreneurship, and nature.",
      ["Inspiration", "Spirituality", "Energy", "Entrepreneurship", "Nature"]),
     ("Meta Launch",         "Studio, team, dogfooding, dragoneering, and Disrupt.",
-     ["Studio", "Team", "Dogfooding", "Dragoneering", "Disrupt"]),
+     ["Studio", "Dogfooding", "Dragoneering", "Disrupt", "Team"]),
 ]
 
 HASH_RE = re.compile(r"\s+[0-9a-f]{32}(?:\.md)?$")
