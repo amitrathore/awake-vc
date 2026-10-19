@@ -253,6 +253,7 @@ a:hover { text-decoration: underline; text-decoration-thickness: 1.5px; text-und
 /* ---------- Project sections (home) ---------- */
 .project-section { padding: 72px 0 20px; scroll-margin-top: 72px; }
 .project-section + .project-section { padding-top: 56px; }
+.portfolio-sub { padding-top: 56px; }
 .project-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -638,6 +639,7 @@ a:hover { text-decoration: underline; text-decoration-thickness: 1.5px; text-und
   .studio-model { padding: 56px 0 48px; }
   .project-section { padding: 56px 0 16px; }
   .project-section + .project-section { padding-top: 40px; }
+  .portfolio-sub { padding-top: 40px; }
   .project-grid { grid-template-columns: 1fr; }
   .project-card { min-height: 90px; }
   .model-step { padding: 22px; }
