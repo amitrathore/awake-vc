@@ -25,7 +25,7 @@ SITE_URL = "https://awake.vc"
 TALLY_FORM_ID = "WOX72a"
 OG_IMAGE_SRC = ROOT / "assets" / "images" / "og-awakevc.png"
 OG_IMAGE_PATH = "images/brand/social.png"
-OG_IMAGE_ALT = "AwakeVC — Venture Studio for the Age of AI, with the golden Painted eye logo."
+OG_IMAGE_ALT = "AwakeVC: a one-person venture studio, run on agents. Golden Painted eye logo."
 
 # ---------------------------------------------------------------------------
 # Site structure — the 10 "Meta" groupings from the Notion index, plus their
