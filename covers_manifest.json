@@ -144,16 +144,6 @@
     "cover_file": "images/covers/bankfac.png",
     "icon_file": "images/icons/bankfac.png"
   },
-  "beyond-all-clouds": {
-    "title": "Beyond All Clouds",
-    "cover": null,
-    "coverW": 0,
-    "coverH": 0,
-    "icon": "https://awakevc.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F3d50cf84-e550-4d8c-97b1-d978c0576a9b%2FCloud-Shoptype-Round.png?id=a88e85c0-39c0-4616-b274-b85b89be1b95&table=block&spaceId=97e8c70d-1337-43fb-b647-804563215289&width=250&userId=&cache=v2",
-    "uuid": "a88e85c039c04616b274b85b89be1b95",
-    "url": "https://awakevc.notion.site/a88e85c039c04616b274b85b89be1b95",
-    "icon_file": "images/icons/beyond-all-clouds.png"
-  },
   "black-limited": {
     "title": "Black Limited",
     "cover": null,
@@ -173,17 +163,6 @@
     "url": "https://awakevc.notion.site/65674aea130244e6953c486b9e611641",
     "cover_file": "images/covers/blockchain.jpg",
     "icon_file": "images/icons/blockchain.png"
-  },
-  "blog": {
-    "title": "Blog",
-    "cover": "https://awakevc.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F31a8ece3-4f63-42f4-93aa-6f902d72e059%2Flight-bulb-5831252_1920.jpg?table=block&id=184b8c23-ea86-48e9-8a5a-8d33957d1446&spaceId=97e8c70d-1337-43fb-b647-804563215289&width=2000&userId=&cache=v2",
-    "coverW": 1920,
-    "coverH": 1920,
-    "icon": "https://awakevc.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F324ec3c9-4e65-4537-b0a4-e0d473c50d99%2Fnoun_RSS_516523.png?id=184b8c23-ea86-48e9-8a5a-8d33957d1446&table=block&spaceId=97e8c70d-1337-43fb-b647-804563215289&width=250&userId=&cache=v2",
-    "uuid": "184b8c23ea8648e98a5a8d33957d1446",
-    "url": "https://awakevc.notion.site/184b8c23ea8648e98a5a8d33957d1446",
-    "cover_file": "images/covers/blog.jpg",
-    "icon_file": "images/icons/blog.png"
   },
   "business": {
     "title": "Business",
@@ -566,17 +545,6 @@
     "cover_file": "images/covers/nfts.jpg",
     "icon_file": "images/icons/nfts.png"
   },
-  "pe": {
-    "title": "PE",
-    "cover": "https://awakevc.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Ffc7f0fee-1a9f-481a-a041-459b0fe216dc%2Fusa-2661656_1920.jpg?table=block&id=01681de8-e6c1-4a6f-b228-ea68c7162414&spaceId=97e8c70d-1337-43fb-b647-804563215289&width=2000&userId=&cache=v2",
-    "coverW": 1920,
-    "coverH": 1386,
-    "icon": "https://awakevc.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd68289e2-e446-45ab-b020-91f0b840857c%2FUnknown-16.png?id=01681de8-e6c1-4a6f-b228-ea68c7162414&table=block&spaceId=97e8c70d-1337-43fb-b647-804563215289&width=250&userId=&cache=v2",
-    "uuid": "01681de8e6c14a6fb228ea68c7162414",
-    "url": "https://awakevc.notion.site/01681de8e6c14a6fb228ea68c7162414",
-    "cover_file": "images/covers/pe.jpg",
-    "icon_file": "images/icons/pe.png"
-  },
   "platform": {
     "title": "Platform",
     "cover": "https://awakevc.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fee8732b8-668b-4b93-8b29-c3a2a54ed610%2Fdigitization-6497133_1920.jpg?table=block&id=68204b2b-7c00-4925-a4e2-152a7d28a3f1&spaceId=97e8c70d-1337-43fb-b647-804563215289&width=2000&userId=&cache=v2",
@@ -685,17 +653,6 @@
     "icon": null,
     "uuid": "9ca35f125d424ba082a482662051e125",
     "url": "https://awakevc.notion.site/9ca35f125d424ba082a482662051e125"
-  },
-  "studio": {
-    "title": "Studio",
-    "cover": "https://awakevc.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F519c9892-1603-4c1b-a2bc-8bc65621cfc7%2Fcrypto-6026827_1920.png?table=block&id=5f513c59-a78c-4c23-9825-2717dd708325&spaceId=97e8c70d-1337-43fb-b647-804563215289&width=2000&userId=&cache=v2",
-    "coverW": 1920,
-    "coverH": 1214,
-    "icon": "https://awakevc.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F53445375-4c68-4546-baf0-ea71213c53fd%2FUnknown-11.png?id=5f513c59-a78c-4c23-9825-2717dd708325&table=block&spaceId=97e8c70d-1337-43fb-b647-804563215289&width=250&userId=&cache=v2",
-    "uuid": "5f513c59a78c4c2398252717dd708325",
-    "url": "https://awakevc.notion.site/5f513c59a78c4c2398252717dd708325",
-    "cover_file": "images/covers/studio.png",
-    "icon_file": "images/icons/studio.png"
   },
   "super-city": {
     "title": "Notion",
