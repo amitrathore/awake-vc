@@ -625,12 +625,141 @@ a:hover { text-decoration: underline; text-decoration-thickness: 1.5px; text-und
 .footer-brand p:not(.footer-tag) a:hover { color: var(--accent-ink); }
 .footer-fine { color: var(--muted); font-size: 12px; }
 
+/* ---------- model-grid 2-column ---------- */
+.model-grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* ---------- Who runs AwakeVC ---------- */
+.who-runs-section {
+  padding: 60px 0 64px;
+  background: var(--bg-soft);
+  border-top: 1px solid var(--line-soft);
+  border-bottom: 1px solid var(--line-soft);
+  scroll-margin-top: 72px;
+}
+.who-runs-heading {
+  font-family: var(--serif);
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  margin: 0 0 32px;
+}
+.who-runs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.who-runs-item {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+.who-runs-item p { margin: 0; }
+.who-runs-item strong { color: var(--ink); }
+
+/* ---------- Agents as cofounders ---------- */
+.agents-cofounders-section {
+  padding: 76px 0 64px;
+  border-top: 1px solid var(--line-soft);
+  scroll-margin-top: 72px;
+}
+.agents-cofounders-section .section-title { margin-bottom: 28px; }
+.agents-cofounders-section p {
+  max-width: 68ch;
+  color: var(--ink-soft);
+  margin: 0 0 20px;
+}
+.agents-cofounders-section p:last-child { margin-bottom: 0; }
+
+/* ---------- Autonomy scorecard ---------- */
+.scorecard-section {
+  padding: 76px 0 64px;
+  background: var(--surface);
+  border-top: 1px solid var(--line-soft);
+  scroll-margin-top: 72px;
+}
+.scorecard-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-top: 32px;
+  max-width: 100%;
+}
+.scorecard-table {
+  width: 100%;
+  min-width: 480px;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+.scorecard-table th,
+.scorecard-table td {
+  text-align: left;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--line-soft);
+}
+.scorecard-table th {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: var(--bg-soft);
+  font-weight: 500;
+}
+.scorecard-table td:last-child {
+  font-family: var(--mono);
+  font-weight: 500;
+  color: var(--accent);
+}
+.scorecard-key {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 16px 0 12px;
+}
+.scorecard-updated {
+  font-size: 14px;
+  color: var(--ink-soft);
+  margin: 0;
+}
+.scorecard-overdue {
+  font-size: 14px;
+  color: var(--accent);
+  margin: 8px 0 0;
+  font-weight: 500;
+}
+
+/* ---------- Secondary button ---------- */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 11px 22px;
+  border-radius: var(--radius);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1;
+  background: transparent;
+  border: 1.5px solid var(--line);
+  color: var(--ink);
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+.btn-secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent-ink);
+  text-decoration: none;
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
   .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .model-grid { grid-template-columns: 1fr; }
+  .model-grid-2 { grid-template-columns: 1fr; }
   .model-step { min-height: 0; }
   .metas .wrap { grid-template-columns: 1fr; gap: 20px; }
+  .who-runs-grid { grid-template-columns: 1fr; gap: 20px; }
 }
 @media (max-width: 720px) {
   body { font-size: 16px; }

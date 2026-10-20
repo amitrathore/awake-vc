@@ -76,6 +76,83 @@
   try { if (!sessionStorage.getItem(sessionKey)) showArt(); } catch (error) { /* Skip automatic art when storage is unavailable. */ }
 })();
 
+// Autonomy scorecard — fetches /data/scorecard.json and renders if ready.
+(function () {
+  var section = document.getElementById('scorecard');
+  if (!section) return;
+
+  function isValid(data) {
+    if (!data || data.visible !== true || !data.updated) return false;
+    if (!Array.isArray(data.stages)) return false;
+    return data.stages.every(function (s) {
+      return typeof s.level === 'number' && Number.isInteger(s.level) && s.level >= 0 && s.level <= 5;
+    });
+  }
+
+  function formatDate(iso) {
+    try {
+      var d = new Date(iso + 'T00:00:00');
+      return d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+    } catch (e) { return iso; }
+  }
+
+  function render(data) {
+    var tbody = document.getElementById('scorecard-tbody');
+    var updatedEl = document.getElementById('scorecard-updated');
+    var overdueEl = document.getElementById('scorecard-overdue');
+    if (!tbody) return;
+
+    data.stages.forEach(function (s) {
+      var tr = document.createElement('tr');
+      var tdStage = document.createElement('td');
+      var tdCovers = document.createElement('td');
+      var tdLevel = document.createElement('td');
+      tdStage.textContent = s.stage;
+      tdCovers.textContent = s.covers;
+      tdLevel.textContent = 'L' + s.level;
+      tr.appendChild(tdStage);
+      tr.appendChild(tdCovers);
+      tr.appendChild(tdLevel);
+      tbody.appendChild(tr);
+    });
+
+    if (updatedEl) updatedEl.textContent = 'Last updated: ' + formatDate(data.updated);
+
+    var updated = new Date(data.updated + 'T00:00:00');
+    var now = new Date();
+    var diffDays = (now - updated) / (1000 * 60 * 60 * 24);
+    if (overdueEl && diffDays > 45) overdueEl.hidden = false;
+
+    section.hidden = false;
+
+    // Add Scorecard nav item
+    var nav = document.getElementById('site-nav');
+    if (nav) {
+      var a = document.createElement('a');
+      a.href = '/#scorecard';
+      a.textContent = 'Scorecard';
+      nav.appendChild(a);
+    }
+
+    // Update hero lede with full sentence
+    var lede = document.getElementById('hero-lede');
+    if (lede) {
+      lede.innerHTML = 'AwakeVC is operated by AmitAvatar, an AI agent trained on everything I’ve built, and owned and overseen by me, Amit Rathore. It co-founds AI-native companies with domain experts. Every month it does more of the work, and I publish exactly how much.';
+    }
+
+    // Update "Who runs AwakeVC" item 3
+    var item3 = document.getElementById('who-runs-item-3');
+    if (item3) {
+      item3.querySelector('p').innerHTML = '<strong>The line between us moves.</strong> The autonomy scorecard below shows exactly where it is today.';
+    }
+  }
+
+  fetch('/data/scorecard.json')
+    .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
+    .then(function (data) { if (isValid(data)) render(data); })
+    .catch(function () { /* silently stay hidden */ });
+})();
+
 // Mobile nav toggle — tiny and dependency-free.
 (function () {
   var toggle = document.querySelector('.nav-toggle');

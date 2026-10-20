@@ -1,0 +1,12 @@
+{
+  "updated": null,
+  "visible": false,
+  "stages": [
+    { "stage": "Thesis", "covers": "Spotting markets, sizing, choosing what to build", "level": null },
+    { "stage": "Validation", "covers": "Research, customer discovery, outreach", "level": null },
+    { "stage": "Build", "covers": "Product, code, content", "level": null },
+    { "stage": "Launch", "covers": "Go-to-market, coseller recruitment", "level": null },
+    { "stage": "Operate", "covers": "Support, ops, finance", "level": null },
+    { "stage": "Formation and capital", "covers": "Entity, agreements, fundraising", "level": null }
+  ]
+}
