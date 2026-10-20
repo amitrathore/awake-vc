@@ -640,12 +640,11 @@ a:hover { text-decoration: underline; text-decoration-thickness: 1.5px; text-und
 }
 .who-runs-heading {
   font-family: var(--serif);
-  font-size: 13px;
+  font-size: clamp(30px, 4vw, 44px);
   font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--muted);
-  margin: 0 0 32px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0 0 36px;
 }
 .who-runs-grid {
   display: grid;
@@ -659,6 +658,7 @@ a:hover { text-decoration: underline; text-decoration-thickness: 1.5px; text-und
 }
 .who-runs-item p { margin: 0; }
 .who-runs-item strong { color: var(--ink); }
+.who-runs-item a { color: var(--accent-ink); }
 
 /* ---------- Agents as cofounders ---------- */
 .agents-cofounders-section {
@@ -750,6 +750,22 @@ a:hover { text-decoration: underline; text-decoration-thickness: 1.5px; text-und
   border-color: var(--accent);
   color: var(--accent-ink);
   text-decoration: none;
+}
+
+/* ---------- Section scroll margins ---------- */
+#top,
+#who-runs-awakevc,
+#agents-as-cofounders,
+#system,
+#scorecard,
+#why-it-compounds,
+#cofound,
+#inner-work,
+#how-it-works,
+#portfolio,
+#worldview,
+#thesis {
+  scroll-margin-top: 84px;
 }
 
 /* ---------- Responsive ---------- */
