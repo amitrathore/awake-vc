@@ -24,8 +24,8 @@ SRC_PAGES = SRC / "AwakeVC"
 SITE_URL = "https://awake.vc"
 TALLY_FORM_ID = "WOX72a"
 OG_IMAGE_SRC = ROOT / "assets" / "images" / "og-awakevc.png"
-OG_IMAGE_PATH = "images/brand/social-eye-world.png"
-OG_IMAGE_ALT = "AwakeVC — a golden eye forms a world of cities, gardens, and waterways around a radiant sun."
+OG_IMAGE_PATH = "images/brand/social-eye-escher.png"
+OG_IMAGE_ALT = "AwakeVC — an eye-shaped world of impossible stairways, interconnected cities, and a radiant golden iris, inspired by Escher."
 
 # ---------------------------------------------------------------------------
 # Site structure — the 10 "Meta" groupings from the Notion index, plus their

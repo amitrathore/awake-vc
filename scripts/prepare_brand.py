@@ -11,11 +11,11 @@ from PIL import Image
 ROOT = Path(__file__).resolve().parent.parent
 
 def prepare_social(web):
-    """Prepare the selected Eye as a World artwork for social previews."""
-    source = ROOT / 'assets/brand/og-concepts/eye-as-world.png'
+    """Prepare the selected Escher-inspired Eye as a World artwork for social previews."""
+    source = ROOT / 'assets/brand/og-concepts/eye-world-escher.png'
     with Image.open(source) as artwork:
         artwork.convert('RGB').resize((1200, 630), Image.Resampling.LANCZOS).save(
-            web / 'social-eye-world.png', optimize=True)
+            web / 'social-eye-escher.png', optimize=True)
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
