@@ -24,8 +24,8 @@ SRC_PAGES = SRC / "AwakeVC"
 SITE_URL = "https://awake.vc"
 TALLY_FORM_ID = "WOX72a"
 OG_IMAGE_SRC = ROOT / "assets" / "images" / "og-awakevc.png"
-OG_IMAGE_PATH = "images/brand/social-agents.png"
-OG_IMAGE_ALT = "AwakeVC — Caution: Agents at Work. Golden painted eye logo on a cream background."
+OG_IMAGE_PATH = "images/brand/social-eye-world.png"
+OG_IMAGE_ALT = "AwakeVC — a golden eye forms a world of cities, gardens, and waterways around a radiant sun."
 
 # ---------------------------------------------------------------------------
 # Site structure — the 10 "Meta" groupings from the Notion index, plus their

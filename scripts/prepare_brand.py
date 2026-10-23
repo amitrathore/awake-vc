@@ -6,25 +6,16 @@ Asset preparation requires Pillow. The normal site build remains stdlib-only.
 import argparse
 import shutil
 from pathlib import Path
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image
 
 ROOT = Path(__file__).resolve().parent.parent
 
-def prepare_social(originals, web, font_dir):
-    """Render the current social card without replacing previously shared assets."""
-    social = Image.new('RGB', (1200, 630), '#faf8f3')
-    draw = ImageDraw.Draw(social)
-    serif = ImageFont.truetype(str(font_dir / 'Georgia.ttf'), 84)
-    sans = ImageFont.truetype(str(font_dir / 'Arial.ttf'), 28)
-    small = ImageFont.truetype(str(font_dir / 'Arial.ttf'), 24)
-    draw.text((80, 70), 'AWAKE.VC', font=small, fill='#8a3f14')
-    for y, line in zip((155, 255, 355), ('Caution:', 'Agents', 'at Work.')):
-        draw.text((76, y), line, font=serif, fill='#111217')
-    draw.text((80, 505), 'Venture studio · Age of AI', font=sans, fill='#3a3b42')
-    painted = Image.open(originals / 'AwakeVC - Painted Logo.png').convert('RGB')
-    painted = painted.resize((400, 400), Image.Resampling.LANCZOS)
-    social.paste(painted, (720, 115))
-    social.save(web / 'social-agents.png', optimize=True)
+def prepare_social(web):
+    """Prepare the selected Eye as a World artwork for social previews."""
+    source = ROOT / 'assets/brand/og-concepts/eye-as-world.png'
+    with Image.open(source) as artwork:
+        artwork.convert('RGB').resize((1200, 630), Image.Resampling.LANCZOS).save(
+            web / 'social-eye-world.png', optimize=True)
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
@@ -47,7 +38,7 @@ def main():
         name = 'apple-touch-icon.png' if size == 180 else f'favicon-{size}.png'
         sparke.resize((size, size), Image.Resampling.LANCZOS).save(web / name, optimize=True)
     sparke.resize((48, 48), Image.Resampling.LANCZOS).save(web / 'favicon.ico', sizes=[(16, 16), (32, 32), (48, 48)])
-    prepare_social(originals, web, args.font_dir)
+    prepare_social(web)
     print('Prepared brand assets in', web)
 
 if __name__ == '__main__':
