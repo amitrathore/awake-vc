@@ -692,6 +692,10 @@ def project_icon(name: str) -> str:
     return f'<span class="project-icon project-monogram" aria-hidden="true">{html.escape(icon["monogram"])}</span>'
 
 
+# Temporarily omitted from the homepage; retain project data and assets.
+HIDDEN_HOME_PROJECTS = {"AltHealth", "Agents of Wine"}
+
+
 def home_sections() -> str:
     parts = []
     for index, (title, section_id, description, projects) in enumerate(HOME_SECTIONS, start=1):
@@ -701,6 +705,8 @@ def home_sections() -> str:
         parts.append(f'  <p class="section-lede">{html.escape(description)}</p>')
         parts.append('  <div class="project-grid">')
         for name, blurb, url in projects:
+            if name in HIDDEN_HOME_PROJECTS:
+                continue
             parts.append(
                 f'    <a class="project-card" href="{html.escape(url, quote=True)}" target="_blank" rel="noopener">'
                 f'<span class="project-heading">{project_icon(name)}<span class="project-name">{html.escape(name)}</span></span>'
