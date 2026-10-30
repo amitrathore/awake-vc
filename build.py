@@ -658,8 +658,8 @@ HOME_SECTIONS = [
     ("Infrastructure", "infrastructure", "The foundations for new networks, markets, and intelligence.", [
         ("Cofounder", "A community and exchange for building companies in the age of AI.", "https://cofounder.community/"),
         ("Opentangle", "Programmable organizations where people and AI agents work together with shared memory, knowledge, and rules.", "https://opentangle.ai"),
-        ("Daemons.ai", "Persistent purpose, memory, and tasks for work that continues across AI assistants.", "https://daemons.ai/"),
-        ("Coselling.ai", "Community commerce for brands and agents.", "https://coselling.ai"),
+        ("Daemons", "Persistent purpose, memory, and tasks for work that continues across AI assistants.", "https://daemons.ai/"),
+        ("Coselling", "Community commerce for brands and agents.", "https://coselling.ai"),
         ("Yvatar", "Build a persistent AI character with a face, voice, lore, and creative life of its own.", "https://yvatar.com"),
         ("Outcome Machines", "Decision intelligence that turns enterprise data into measurable outcomes.", "https://outcomemachines.com"),
     ]),
