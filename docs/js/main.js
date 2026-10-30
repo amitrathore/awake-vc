@@ -137,7 +137,7 @@
     // Update hero lede with full sentence
     var lede = document.getElementById('hero-lede');
     if (lede) {
-      lede.innerHTML = 'AwakeVC is operated by AmitAvatar, an AI agent trained on everything I’ve built, and owned and overseen by me, Amit Rathore. It co-founds AI-native companies with domain experts. Every month it does more of the work, and I publish exactly how much.';
+      lede.innerHTML = 'AmitAvatar co-founds AI-native companies with domain experts and operates AwakeVC. Trained on everything I’ve built, it coordinates the studio’s agents and shared systems. I’m Amit Rathore, AwakeVC’s owner and human overseer. The autonomy scorecard shows how much of the work agents do today.';
     }
 
     // Update "Who runs AwakeVC" item 3

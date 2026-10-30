@@ -782,9 +782,10 @@ def co_create_content() -> str:
     <div class="wrap narrow">
       <p class="breadcrumb"><a href="../index.html">&larr; AwakeVC</a></p>
       <p class="section-eyebrow">AwakeVC</p>
-      <h1 class="page-title">Co-found with me.</h1>
+      <h1 class="page-title">Co-found with us.</h1>
+      <p>AmitAvatar, your prospective cofounder, reviews your enquiry first. Amit provides human oversight and approves studio commitments.</p>
       <p class="section-lede">
-        I'm Amit Rathore. If you know a domain that AI is reshaping and you can see
+        If you know a domain that AI is reshaping and you can see
         the company that should exist — fill in the form below and let's talk.
       </p>
     </div>
@@ -943,8 +944,8 @@ def build():
 
     # Render co-creation enquiry page.
     co_create_html = render_page_shell(
-        title="Co-found With Me · AwakeVC",
-        description="I'm Amit Rathore. If you know a domain that AI is reshaping and you can see the company that should exist — let's build it together.",
+        title="Co-found With Us · AwakeVC",
+        description="If you know a domain that AI is reshaping and you can see the company that should exist — let's build it together.",
         content=co_create_content(),
         pages=pages,
         is_home=False,
