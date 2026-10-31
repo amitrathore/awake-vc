@@ -4,7 +4,7 @@ const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
 const assert = require('node:assert/strict');
 const base = process.env.TEST_BASE_URL || 'http://127.0.0.1:8765';
 (async () => {
-  const browser = await chromium.launch({ headless: true });
+  const browser = await chromium.launch({ headless: true, ...(process.env.PLAYWRIGHT_CHANNEL ? { channel: process.env.PLAYWRIGHT_CHANNEL } : {}) });
   const errors = [];
   async function fresh(options = {}, setup) {
     const context = await browser.newContext(options);
@@ -18,7 +18,7 @@ const base = process.env.TEST_BASE_URL || 'http://127.0.0.1:8765';
     return { context, page };
   }
   async function open(page) { await page.locator('.art-splash[open]').waitFor(); }
-  async function closed(page) { assert.equal(await page.locator('.art-splash').evaluate(d => d.open), false); }
+  async function closed(page) { await page.clock.runFor(20); assert.equal(await page.locator('.art-splash').evaluate(d => d.open), false); }
   const { context, page } = await fresh();
   await open(page);
   assert.equal(await page.locator('.art-skip').evaluate(b => b === document.activeElement), true);
@@ -53,13 +53,16 @@ const base = process.env.TEST_BASE_URL || 'http://127.0.0.1:8765';
   console.log('PASS session persistence, interior replay, pointer/keyboard activation, dismissal, focus restoration, home navigation');
   await context.close();
 
-  const editions = ['Dali', 'Kandinsky', 'Monet', 'Picasso', 'Warhol'];
+  const editions = ['Dali logo', 'Kandinsky logo', 'Monet logo', 'Picasso logo', 'Warhol logo', 'Magritte-inspired eye-world', 'de Chirico-inspired eye-world', 'Klee-inspired eye-world', 'Kandinsky-inspired eye-world', 'Miró-inspired eye-world'];
+  const files = ['dali', 'kandinsky', 'monet', 'picasso', 'warhol', 'eye-world-magritte', 'eye-world-de-chirico', 'eye-world-klee', 'eye-world-kandinsky', 'eye-world-miro'];
   for (let i = 0; i < editions.length; i++) {
-    const r = i === 4 ? 0.999 : i / 5;
+    const r = (i + 0.5) / editions.length;
     const duration = 3000 + r * 4000;
     const test = await fresh({}, p => p.addInitScript(value => { Math.random = () => value; }, r));
     await open(test.page);
     assert.match(await test.page.locator('.art-edition').textContent(), new RegExp(editions[i]));
+    assert.ok((await test.page.locator('.art-splash-image').getAttribute('src')).endsWith(files[i] + '.webp'));
+    assert.ok((await test.page.locator('.art-splash-image').getAttribute('alt')).length > 20);
     await test.page.clock.runFor(Math.floor(duration) - 200);
     assert.equal(await test.page.locator('.art-splash').evaluate(d => d.open), true);
     await test.page.clock.runFor(201);
@@ -67,13 +70,17 @@ const base = process.env.TEST_BASE_URL || 'http://127.0.0.1:8765';
     console.log('PASS random edition and lifetime', editions[i], duration);
     await test.context.close();
   }
+  for (const landscape of [false, true]) {
   for (const width of [1280, 800, 390]) {
-    const test = await fresh({ viewport: { width, height: 900 } });
+    const test = await fresh({ viewport: { width, height: width === 800 ? 400 : 900 } }, p => p.addInitScript(r => { Math.random = () => r; }, landscape ? 0.85 : 0.05));
     await open(test.page);
     await test.page.screenshot({ path: `/private/tmp/awake-splash-${width}.png` });
     assert.equal(await test.page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
     const box = await test.page.locator('.art-splash-image').boundingBox();
-    assert.ok(box.width <= Math.min(440, width * 0.8) + 1);
+    assert.ok(box.width <= Math.min(landscape ? 900 : 440, width * 0.8) + 1);
+    const ratio = await test.page.locator('.art-splash-image').evaluate(i => i.naturalWidth / i.naturalHeight);
+    assert.ok(Math.abs(box.width / box.height - ratio) < 0.02);
+    assert.ok(box.height <= (width === 800 ? 400 : 900) * 0.65 + 2);
     await test.page.locator('.art-skip').click();
     await test.page.screenshot({ path: `/private/tmp/awake-brand-${width}.png` });
     assert.equal(await test.page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
@@ -86,6 +93,7 @@ const base = process.env.TEST_BASE_URL || 'http://127.0.0.1:8765';
     console.log('PASS responsive artwork and header', width);
     await test.context.close();
   }
+  }
   const reduced = await fresh({ reducedMotion: 'reduce' });
   await open(reduced.page);
   assert.equal(await reduced.page.locator('.art-splash-content').evaluate(e => getComputedStyle(e).animationName), 'none');
@@ -94,7 +102,7 @@ const base = process.env.TEST_BASE_URL || 'http://127.0.0.1:8765';
   await closed(storage.page);
   await storage.page.locator('.brand-art').focus(); await storage.page.keyboard.press('Enter'); await open(storage.page);
   await storage.context.close();
-  const failure = await fresh({}, p => p.route(/\/(dali|kandinsky|monet|picasso|warhol)\.webp/, route => route.abort()));
+  const failure = await fresh({}, p => p.route(/\/images\/brand\/[^/]+\.webp/, route => route.abort()));
   await closed(failure.page);
   assert.equal(await failure.page.locator('body').evaluate(b => b.style.overflow), '');
   await failure.context.close();

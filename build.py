@@ -1090,10 +1090,10 @@ a:hover { text-decoration: underline; text-decoration-thickness: 1.5px; text-und
 .art-splash::backdrop { background: var(--bg); }
 .art-splash-content { text-align: center; }
 .art-splash-image {
-  width: min(440px, 80vw, 65vh);
-  width: min(440px, 80vw, 65svh);
+  width: min(var(--art-max-width, 440px), 80vw, calc(65vh * var(--art-ratio, 1)));
+  width: min(var(--art-max-width, 440px), 80vw, calc(65svh * var(--art-ratio, 1)));
   height: auto;
-  aspect-ratio: 1;
+  aspect-ratio: var(--art-ratio, 1);
   object-fit: contain;
   background: white;
   border: 1px solid var(--line-soft);
@@ -1674,7 +1674,18 @@ MAIN_JS = r"""
   if (!dialog || !trigger || typeof dialog.showModal !== 'function') return;
   var art = dialog.querySelector('.art-splash-image');
   var caption = dialog.querySelector('.art-edition');
-  var editions = ['Dali', 'Kandinsky', 'Monet', 'Picasso', 'Warhol'];
+  var editions = [
+    {"file": "dali.webp", "label": "Dali logo", "alt": "AwakeVC eye logo, Dali edition", "width": 640, "height": 640},
+    {"file": "kandinsky.webp", "label": "Kandinsky logo", "alt": "AwakeVC eye logo, Kandinsky edition", "width": 640, "height": 640},
+    {"file": "monet.webp", "label": "Monet logo", "alt": "AwakeVC eye logo, Monet edition", "width": 640, "height": 640},
+    {"file": "picasso.webp", "label": "Picasso logo", "alt": "AwakeVC eye logo, Picasso edition", "width": 640, "height": 640},
+    {"file": "warhol.webp", "label": "Warhol logo", "alt": "AwakeVC eye logo, Warhol edition", "width": 640, "height": 640},
+    {"file": "eye-world-magritte.webp", "label": "Magritte-inspired eye-world", "alt": "AwakeVC eye-shaped world with shared intelligence, inspired by Magritte", "width": 1200, "height": 629},
+    {"file": "eye-world-de-chirico.webp", "label": "de Chirico-inspired eye-world", "alt": "AwakeVC eye-shaped world with shared intelligence, inspired by de Chirico", "width": 1200, "height": 629},
+    {"file": "eye-world-klee.webp", "label": "Klee-inspired eye-world", "alt": "AwakeVC eye-shaped world with shared intelligence, inspired by Klee", "width": 1200, "height": 628},
+    {"file": "eye-world-kandinsky.webp", "label": "Kandinsky-inspired eye-world", "alt": "AwakeVC eye-shaped world with shared intelligence, inspired by Kandinsky", "width": 1200, "height": 629},
+    {"file": "eye-world-miro.webp", "label": "Miró-inspired eye-world", "alt": "AwakeVC eye-shaped world with shared intelligence, inspired by Miró", "width": 1200, "height": 629}
+  ];
   var sessionKey = 'awakevc-art-seen-v1';
   var pending = false;
   var closeTimer;
@@ -1690,14 +1701,16 @@ MAIN_JS = r"""
     clearTimeout(closeTimer);
     clearTimeout(fadeTimer);
     if (dialog.open) dialog.close();
+    restorePage();
   }
-  dialog.addEventListener('close', function () {
+  function restorePage() {
     clearTimeout(closeTimer);
     clearTimeout(fadeTimer);
     document.body.style.overflow = previousOverflow;
     dialog.classList.remove('is-entering', 'is-closing');
     if (returnFocus && returnFocus.isConnected) returnFocus.focus({ preventScroll: true });
-  });
+  }
+  dialog.addEventListener('close', restorePage);
   dialog.addEventListener('cancel', function (event) { event.preventDefault(); closeArt(); });
   dialog.querySelector('.art-skip').addEventListener('click', closeArt);
   dialog.addEventListener('click', function (event) { if (event.target === dialog) closeArt(); });
@@ -1717,8 +1730,12 @@ MAIN_JS = r"""
       image.onload = image.onerror = null;
       returnFocus = document.activeElement === document.body ? document.querySelector('.brand-lockup .brand') : document.activeElement;
       art.src = image.src;
-      art.alt = 'AwakeVC eye logo, ' + edition + ' edition';
-      caption.textContent = 'AwakeVC \u00b7 ' + edition + ' edition';
+      art.alt = edition.alt;
+      art.width = edition.width;
+      art.height = edition.height;
+      art.style.setProperty('--art-ratio', edition.width / edition.height);
+      art.style.setProperty('--art-max-width', edition.width > edition.height ? '900px' : '440px');
+      caption.textContent = 'AwakeVC \u00b7 ' + edition.label;
       previousOverflow = document.body.style.overflow;
       document.body.style.overflow = 'hidden';
       dialog.classList.add('is-entering');
@@ -1731,7 +1748,7 @@ MAIN_JS = r"""
         fadeTimer = setTimeout(closeArt, fade);
       }, duration - fade);
     };
-    image.src = dialog.dataset.assets + '/' + edition.toLowerCase() + '.webp';
+    image.src = dialog.dataset.assets + '/' + edition.file;
   }
 
   trigger.addEventListener('click', function (event) {

@@ -17,6 +17,15 @@ def prepare_social(web):
         artwork.convert('RGB').resize((1200, 630), Image.Resampling.LANCZOS).save(
             web / 'social-eye-escher.png', optimize=True)
 
+def prepare_rotation(web):
+    """Prepare landscape artwork without cropping its original composition."""
+    for artist in ['magritte', 'de-chirico', 'klee', 'kandinsky', 'miro']:
+        source = ROOT / f'assets/brand/og-concepts/eye-world-{artist}.png'
+        with Image.open(source) as artwork:
+            image = artwork.convert('RGB')
+            image.thumbnail((1200, 1200), Image.Resampling.LANCZOS)
+            image.save(web / f'eye-world-{artist}.webp', quality=88, method=6)
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--source', type=Path, required=True)
@@ -39,6 +48,7 @@ def main():
         sparke.resize((size, size), Image.Resampling.LANCZOS).save(web / name, optimize=True)
     sparke.resize((48, 48), Image.Resampling.LANCZOS).save(web / 'favicon.ico', sizes=[(16, 16), (32, 32), (48, 48)])
     prepare_social(web)
+    prepare_rotation(web)
     print('Prepared brand assets in', web)
 
 if __name__ == '__main__':

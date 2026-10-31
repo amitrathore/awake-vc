@@ -100,10 +100,10 @@ a:hover { text-decoration: underline; text-decoration-thickness: 1.5px; text-und
 .art-splash::backdrop { background: var(--bg); }
 .art-splash-content { text-align: center; }
 .art-splash-image {
-  width: min(440px, 80vw, 65vh);
-  width: min(440px, 80vw, 65svh);
+  width: min(var(--art-max-width, 440px), 80vw, calc(65vh * var(--art-ratio, 1)));
+  width: min(var(--art-max-width, 440px), 80vw, calc(65svh * var(--art-ratio, 1)));
   height: auto;
-  aspect-ratio: 1;
+  aspect-ratio: var(--art-ratio, 1);
   object-fit: contain;
   background: white;
   border: 1px solid var(--line-soft);
