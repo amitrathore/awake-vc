@@ -7,16 +7,16 @@
   var art = dialog.querySelector('.art-splash-image');
   var caption = dialog.querySelector('.art-edition');
   var editions = [
-    {"file": "dali.webp", "label": "Dali logo", "alt": "AwakeVC eye logo, Dali edition", "width": 640, "height": 640},
-    {"file": "kandinsky.webp", "label": "Kandinsky logo", "alt": "AwakeVC eye logo, Kandinsky edition", "width": 640, "height": 640},
-    {"file": "monet.webp", "label": "Monet logo", "alt": "AwakeVC eye logo, Monet edition", "width": 640, "height": 640},
-    {"file": "picasso.webp", "label": "Picasso logo", "alt": "AwakeVC eye logo, Picasso edition", "width": 640, "height": 640},
-    {"file": "warhol.webp", "label": "Warhol logo", "alt": "AwakeVC eye logo, Warhol edition", "width": 640, "height": 640},
-    {"file": "eye-world-magritte.webp", "label": "Magritte-inspired eye-world", "alt": "AwakeVC eye-shaped world with shared intelligence, inspired by Magritte", "width": 1200, "height": 629},
-    {"file": "eye-world-de-chirico.webp", "label": "de Chirico-inspired eye-world", "alt": "AwakeVC eye-shaped world with shared intelligence, inspired by de Chirico", "width": 1200, "height": 629},
-    {"file": "eye-world-klee.webp", "label": "Klee-inspired eye-world", "alt": "AwakeVC eye-shaped world with shared intelligence, inspired by Klee", "width": 1200, "height": 628},
-    {"file": "eye-world-kandinsky.webp", "label": "Kandinsky-inspired eye-world", "alt": "AwakeVC eye-shaped world with shared intelligence, inspired by Kandinsky", "width": 1200, "height": 629},
-    {"file": "eye-world-miro.webp", "label": "Miró-inspired eye-world", "alt": "AwakeVC eye-shaped world with shared intelligence, inspired by Miró", "width": 1200, "height": 629}
+    {"file": "dali.webp", "label": "Inspired by Dalí · Eye logo", "alt": "AwakeVC eye logo, Dali edition", "width": 640, "height": 640},
+    {"file": "kandinsky.webp", "label": "Inspired by Kandinsky · Eye logo", "alt": "AwakeVC eye logo, Kandinsky edition", "width": 640, "height": 640},
+    {"file": "monet.webp", "label": "Inspired by Monet · Eye logo", "alt": "AwakeVC eye logo, Monet edition", "width": 640, "height": 640},
+    {"file": "picasso.webp", "label": "Inspired by Picasso · Eye logo", "alt": "AwakeVC eye logo, Picasso edition", "width": 640, "height": 640},
+    {"file": "warhol.webp", "label": "Inspired by Warhol · Eye logo", "alt": "AwakeVC eye logo, Warhol edition", "width": 640, "height": 640},
+    {"file": "eye-world-magritte.webp", "label": "Inspired by Magritte · Eye world", "alt": "AwakeVC eye-shaped world with shared intelligence, inspired by Magritte", "width": 1200, "height": 629},
+    {"file": "eye-world-de-chirico.webp", "label": "Inspired by de Chirico · Eye world", "alt": "AwakeVC eye-shaped world with shared intelligence, inspired by de Chirico", "width": 1200, "height": 629},
+    {"file": "eye-world-klee.webp", "label": "Inspired by Klee · Eye world", "alt": "AwakeVC eye-shaped world with shared intelligence, inspired by Klee", "width": 1200, "height": 628},
+    {"file": "eye-world-kandinsky.webp", "label": "Inspired by Kandinsky · Eye world", "alt": "AwakeVC eye-shaped world with shared intelligence, inspired by Kandinsky", "width": 1200, "height": 629},
+    {"file": "eye-world-miro.webp", "label": "Inspired by Miró · Eye world", "alt": "AwakeVC eye-shaped world with shared intelligence, inspired by Miró", "width": 1200, "height": 629}
   ];
   var sessionKey = 'awakevc-art-seen-v1';
   var pending = false;

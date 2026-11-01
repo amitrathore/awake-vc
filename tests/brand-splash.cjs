@@ -53,7 +53,7 @@ const base = process.env.TEST_BASE_URL || 'http://127.0.0.1:8765';
   console.log('PASS session persistence, interior replay, pointer/keyboard activation, dismissal, focus restoration, home navigation');
   await context.close();
 
-  const editions = ['Dali logo', 'Kandinsky logo', 'Monet logo', 'Picasso logo', 'Warhol logo', 'Magritte-inspired eye-world', 'de Chirico-inspired eye-world', 'Klee-inspired eye-world', 'Kandinsky-inspired eye-world', 'Miró-inspired eye-world'];
+  const editions = ['Inspired by Dalí · Eye logo', 'Inspired by Kandinsky · Eye logo', 'Inspired by Monet · Eye logo', 'Inspired by Picasso · Eye logo', 'Inspired by Warhol · Eye logo', 'Inspired by Magritte · Eye world', 'Inspired by de Chirico · Eye world', 'Inspired by Klee · Eye world', 'Inspired by Kandinsky · Eye world', 'Inspired by Miró · Eye world'];
   const files = ['dali', 'kandinsky', 'monet', 'picasso', 'warhol', 'eye-world-magritte', 'eye-world-de-chirico', 'eye-world-klee', 'eye-world-kandinsky', 'eye-world-miro'];
   for (let i = 0; i < editions.length; i++) {
     const r = (i + 0.5) / editions.length;
