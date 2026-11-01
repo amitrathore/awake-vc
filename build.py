@@ -673,7 +673,7 @@ HOME_SECTIONS = [
     ]),
     ("Worldview", "worldview", "Books and explorations on the world behind our world.", [
         ("Effective Humanism", "Awakened Value Co-creation as a practice.", "https://effectivehumanism.org"),
-        ("Awake Ventures", "A social market network for the venture ecosystem.", "https://awake.ventures"),
+        ("Writing on Awake Ventures", "Amit Rathore on Awake Ventures — the thinking behind the studio.", "https://awake.ventures/@amit"),
         ("Book of Agents", "Building opentangle.ai — stay tuned.", "https://bookofagents.com"),
         ("Outcomeering", "The discipline of engineering outcomes", "https://outcomeering.com"),
         ("The Fractals", "Radical entrepreneurship, clarity, and agency for the age of AI.", "https://thefractals.co"),
