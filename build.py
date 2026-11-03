@@ -1686,7 +1686,17 @@ MAIN_JS = r"""
     {"file": "eye-world-de-chirico.webp", "label": "Inspired by de Chirico · Eye world", "alt": "AwakeVC eye-shaped world with shared intelligence, inspired by de Chirico", "width": 1200, "height": 629},
     {"file": "eye-world-klee.webp", "label": "Inspired by Klee · Eye world", "alt": "AwakeVC eye-shaped world with shared intelligence, inspired by Klee", "width": 1200, "height": 628},
     {"file": "eye-world-kandinsky.webp", "label": "Inspired by Kandinsky · Eye world", "alt": "AwakeVC eye-shaped world with shared intelligence, inspired by Kandinsky", "width": 1200, "height": 629},
-    {"file": "eye-world-miro.webp", "label": "Inspired by Miró · Eye world", "alt": "AwakeVC eye-shaped world with shared intelligence, inspired by Miró", "width": 1200, "height": 629}
+    {"file": "eye-world-miro.webp", "label": "Inspired by Miró · Eye world", "alt": "AwakeVC eye-shaped world with shared intelligence, inspired by Miró", "width": 1200, "height": 629},
+    {"file": "eye-as-world.webp", "label": "Original · Eye world", "alt": "AwakeVC — A golden eye forms a world of gardens, cities, and waterways around a sun.", "width": 1200, "height": 629},
+    {"file": "eye-world-picasso.webp", "label": "Inspired by Picasso · Eye world", "alt": "AwakeVC — A Cubist eye-shaped world of angular architecture, people, and linked golden nodes.", "width": 1200, "height": 629},
+    {"file": "eye-world-dali.webp", "label": "Inspired by Dalí · Eye world", "alt": "AwakeVC — A surreal eye-shaped world of suspended bridges, elongated towers, and reflected networks.", "width": 1200, "height": 628},
+    {"file": "eye-world-escher.webp", "label": "Inspired by Escher · Eye world", "alt": "AwakeVC — An eye-shaped world of impossible stairways, recursive architecture, and a golden iris.", "width": 1200, "height": 628},
+    {"file": "eye-world-luminous-network.webp", "label": "Luminous Network · Eye world", "alt": "AwakeVC — Fine luminous networks connect the bridges, cities, and waterways of a golden eye-shaped world.", "width": 1200, "height": 629},
+    {"file": "eye-world-agent-atelier.webp", "label": "Agent Atelier · Eye world", "alt": "AwakeVC — Human builders and luminous agents work together in workshops across an eye-shaped world.", "width": 1200, "height": 629},
+    {"file": "eye-world-living-intelligence.webp", "label": "Living Intelligence · Eye world", "alt": "AwakeVC — Crystalline memory seeds and golden networks connect gardens and architecture in an eye-shaped world.", "width": 1200, "height": 629},
+    {"file": "living-blueprint.webp", "label": "Living Blueprint · Concept artwork", "alt": "AwakeVC — An architectural drawing transforms into a flourishing world of connected structures and gardens.", "width": 1200, "height": 629},
+    {"file": "impossible-studio.webp", "label": "Impossible Studio · Concept artwork", "alt": "AwakeVC — A human builder, mechanical instruments, and luminous intelligence construct a miniature city together.", "width": 1200, "height": 628},
+    {"file": "compounding-garden.webp", "label": "Compounding Garden · Concept artwork", "alt": "AwakeVC — Fantastical plants and architectural blossoms share an interconnected luminous root system.", "width": 1200, "height": 630}
   ];
   var sessionKey = 'awakevc-art-seen-v1';
   var pending = false;

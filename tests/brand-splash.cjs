@@ -53,14 +53,14 @@ const base = process.env.TEST_BASE_URL || 'http://127.0.0.1:8765';
   console.log('PASS session persistence, interior replay, pointer/keyboard activation, dismissal, focus restoration, home navigation');
   await context.close();
 
-  const editions = ['Inspired by Dalí · Eye logo', 'Inspired by Kandinsky · Eye logo', 'Inspired by Monet · Eye logo', 'Inspired by Picasso · Eye logo', 'Inspired by Warhol · Eye logo', 'Inspired by Magritte · Eye world', 'Inspired by de Chirico · Eye world', 'Inspired by Klee · Eye world', 'Inspired by Kandinsky · Eye world', 'Inspired by Miró · Eye world'];
-  const files = ['dali', 'kandinsky', 'monet', 'picasso', 'warhol', 'eye-world-magritte', 'eye-world-de-chirico', 'eye-world-klee', 'eye-world-kandinsky', 'eye-world-miro'];
+  const editions = ["Inspired by Dalí · Eye logo", "Inspired by Kandinsky · Eye logo", "Inspired by Monet · Eye logo", "Inspired by Picasso · Eye logo", "Inspired by Warhol · Eye logo", "Inspired by Magritte · Eye world", "Inspired by de Chirico · Eye world", "Inspired by Klee · Eye world", "Inspired by Kandinsky · Eye world", "Inspired by Miró · Eye world", "Original · Eye world", "Inspired by Picasso · Eye world", "Inspired by Dalí · Eye world", "Inspired by Escher · Eye world", "Luminous Network · Eye world", "Agent Atelier · Eye world", "Living Intelligence · Eye world", "Living Blueprint · Concept artwork", "Impossible Studio · Concept artwork", "Compounding Garden · Concept artwork"];
+  const files = ["dali", "kandinsky", "monet", "picasso", "warhol", "eye-world-magritte", "eye-world-de-chirico", "eye-world-klee", "eye-world-kandinsky", "eye-world-miro", "eye-as-world", "eye-world-picasso", "eye-world-dali", "eye-world-escher", "eye-world-luminous-network", "eye-world-agent-atelier", "eye-world-living-intelligence", "living-blueprint", "impossible-studio", "compounding-garden"];
   for (let i = 0; i < editions.length; i++) {
     const r = (i + 0.5) / editions.length;
     const duration = 3000 + r * 4000;
     const test = await fresh({}, p => p.addInitScript(value => { Math.random = () => value; }, r));
     await open(test.page);
-    assert.match(await test.page.locator('.art-edition').textContent(), new RegExp(editions[i]));
+    assert.equal(await test.page.locator('.art-edition').textContent(), 'AwakeVC · ' + editions[i]);
     assert.ok((await test.page.locator('.art-splash-image').getAttribute('src')).endsWith(files[i] + '.webp'));
     assert.ok((await test.page.locator('.art-splash-image').getAttribute('alt')).length > 20);
     await test.page.clock.runFor(Math.floor(duration) - 200);

@@ -19,12 +19,12 @@ def prepare_social(web):
 
 def prepare_rotation(web):
     """Prepare landscape artwork without cropping its original composition."""
-    for artist in ['magritte', 'de-chirico', 'klee', 'kandinsky', 'miro']:
-        source = ROOT / f'assets/brand/og-concepts/eye-world-{artist}.png'
+    for stem in ['eye-world-magritte', 'eye-world-de-chirico', 'eye-world-klee', 'eye-world-kandinsky', 'eye-world-miro', 'eye-as-world', 'eye-world-picasso', 'eye-world-dali', 'eye-world-escher', 'eye-world-luminous-network', 'eye-world-agent-atelier', 'eye-world-living-intelligence', 'living-blueprint', 'impossible-studio', 'compounding-garden']:
+        source = ROOT / f'assets/brand/og-concepts/{stem}.png'
         with Image.open(source) as artwork:
             image = artwork.convert('RGB')
             image.thumbnail((1200, 1200), Image.Resampling.LANCZOS)
-            image.save(web / f'eye-world-{artist}.webp', quality=88, method=6)
+            image.save(web / f'{stem}.webp', quality=88, method=6)
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
