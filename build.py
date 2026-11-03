@@ -939,6 +939,8 @@ def build():
                 snippet = strip_md(s)
                 break
         description = f"{page.title} — AwakeVC. {snippet[:160]}"
+        if slug == "team":
+            description = 'AwakeVC is a single-person effort. Amit Rathore has built nearly all its incubated software, with help from coding agents.'
         html_out = render_page_shell(
             title=f"{page.title} · AwakeVC",
             description=description,
