@@ -161,10 +161,13 @@
       nav.appendChild(a);
     }
 
-    // Update hero lede with full sentence
+    // Add scorecard context without replacing the human/agent introduction.
     var lede = document.getElementById('hero-lede');
-    if (lede) {
-      lede.innerHTML = 'AmitAvatar co-founds AI-native companies with domain experts and operates AwakeVC. Trained on everything I’ve built, it coordinates the studio’s agents and shared systems. I’m Amit Rathore, AwakeVC’s owner and human overseer. The autonomy scorecard shows how much of the work agents do today.';
+    if (lede && !document.getElementById('scorecard-note')) {
+      var note = document.createElement('span');
+      note.id = 'scorecard-note';
+      note.textContent = ' The autonomy scorecard shows how much of the work agents do today.';
+      lede.appendChild(note);
     }
 
     // Update "Who runs AwakeVC" item 3

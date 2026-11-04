@@ -32,29 +32,33 @@ OG_IMAGE_ALT = "AwakeVC — an eye-shaped world of impossible stairways, interco
 # child pages. Titles are the display labels; slugs are derived below.
 # ---------------------------------------------------------------------------
 
-META_SECTIONS = [
-    ("Meta Reality",        "The philosophical foundation: protocols, networks, identity, value.",
-     ["Protocols", "Network", "Identity", "Value"]),
-    ("Meta Main Street",    "Business, money, markets, and commerce facilitation.",
-     ["Business", "Money", "Market", "ComFac"]),
-    ("Meta Wall Street",    "Banking, capital, and exchange infrastructure.",
-     ["BankFac", "CapFac", "Exchange"]),
-    ("Meta Basis",          "The building blocks: Lisp, HTTP, connections, cosellers, and the new retail.",
-     ["Lisp", "HTTP", "Connections", "SaleRank", "Cosellers", "Retail 3 0",
-      "Metaverse", "Avatars", "Web2 5", "Ecosystems"]),
-    ("Meta Agents",         "Attribution, agentic markets, Opentangle, agent-run organizations, decision intelligence, and games.",
-     ["Attribution", "Agentic Markets", "Opentangle", "Agent Run Organizations",
-      "Decision Intelligence", "Games"]),
-    ("Meta Internet",       "Blockchain, crypto, Web3, DeFi, DAOs, and the MetaWeb.",
-     ["Blockchain", "Crypto", "NFTs", "Web3", "MetaWeb",
-      "Communities", "DeFi", "DAOs"]),
-    ("Meta Silicon Valley", "Platforms, ventures, acceleration, and syndication.",
-     ["Platform", "Venture", "Acceleration", "Syndication"]),
-    ("Meta Vision",         "Inspiration, spirituality, energy, entrepreneurship, and nature.",
-     ["Inspiration", "Spirituality", "Energy", "Entrepreneurship", "Nature"]),
-    ("Meta Launch",         "Studio, team, dogfooding, dragoneering, and Disrupt.",
-     ["Studio", "Dogfooding", "Dragoneering", "Disrupt", "Team"]),
-]
+META_SECTIONS = [('Reality',
+  'The philosophical foundation: protocols, networks, identity, value.',
+  ['Protocols', 'Network', 'Identity', 'Value']),
+ ('Agents',
+  'Attribution, Intergraph, agentic markets, Opentangle, agent-run organizations, decision '
+  'intelligence, and games.',
+  ['Attribution',
+   'Intergraph',
+   'Agentic Markets',
+   'Opentangle',
+   'Agent Run Organizations',
+   'Decision Intelligence',
+   'Games']),
+ ('Main Street',
+  'Business, money, markets, commerce facilitation, and communities.',
+  ['Business', 'Money', 'Market', 'ComFac', 'Communities']),
+ ('Capital', 'Banking, capital facilitation, and exchange infrastructure.', ['Capital']),
+ ('Basis',
+  'The building blocks: Lisp, HTTP, cosellers, avatars, and ecosystems.',
+  ['Lisp', 'HTTP', 'Cosellers', 'Avatars', 'Ecosystems']),
+ ('Silicon Valley', 'Platforms and ventures.', ['Platform', 'Venture']),
+ ('Vision',
+  'Inspiration, spirituality, energy, entrepreneurship, and nature.',
+  ['Inspiration', 'Spirituality', 'Energy', 'Entrepreneurship', 'Nature']),
+ ('Launch',
+  'Team, dogfooding, dragoneering, and Disrupt.',
+  ['Dogfooding', 'Dragoneering', 'Disrupt', 'Team'])]
 
 HASH_RE = re.compile(r"\s+[0-9a-f]{32}(?:\.md)?$")
 HASH_IN_PATH_RE = re.compile(r"\s+[0-9a-f]{32}")
@@ -72,11 +76,11 @@ FOOTER_HTML = """
 """
 
 NAV_ITEMS = [
-    ("How it works", "#how-it-works"),
-    ("Portfolio",    "#portfolio"),
-    ("Worldview",    "#worldview"),
-    ("Thesis",       "#thesis"),
-    ("Team",         "team"),
+    ("Studio", "#who-runs-awakevc"),
+    ("Agents", "#agent-participation"),
+    ("Ventures", "#portfolio"),
+    ("Design", "#thesis"),
+    ("Team", "team"),
 ]
 
 EXCLUDED_SLUGS = {
@@ -530,7 +534,7 @@ BASE_HTML = """<!doctype html>
         <button class="brand-art" type="button" aria-label="Show AwakeVC art" hidden><img src="{brand_path}/painted.webp" alt="" width="40" height="40"></button>
         <a href="{home_rel}" class="brand"><span class="brand-mark">awake<span class="brand-dot">.</span>vc</span></a>
       </div>
-      <nav class="site-nav">
+      <nav class="site-nav"{nav_id}>
         {nav_links}
       </nav>
       <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
@@ -557,9 +561,9 @@ def nav_html(pages: dict[str, Page], home_rel: str, page_rel_prefix: str) -> str
     items: list[str] = []
     for label, slug in NAV_ITEMS:
         if slug.startswith("#"):
-            href = f"{home_rel}{slug}"
+            href = f"/{slug}"
         else:
-            href = f"{page_rel_prefix}{slug}.html"
+            href = f"/pages/{slug}.html"
         items.append(f'<a href="{href}">{label}</a>')
     return "\n        ".join(items)
 
@@ -570,7 +574,7 @@ def render_page_shell(title: str, description: str, content: str,
     if is_home:
         css_rel = "css/styles.css"
         js_rel = "js/main.js"
-        home_rel = "index.html"
+        home_rel = "/"
         page_rel_prefix = "pages/"
         body_class = "home"
     else:
@@ -591,6 +595,7 @@ def render_page_shell(title: str, description: str, content: str,
         home_rel=home_rel,
         body_class=body_class,
         nav_links=nav_html(pages, home_rel, page_rel_prefix),
+        nav_id=' id="site-nav"' if is_home else "",
         content=content,
         footer=FOOTER_HTML.format(home=home_rel, brand_path="images/brand" if is_home else "../images/brand"),
     )
@@ -605,63 +610,142 @@ def canonical_url(path_rel: str = "") -> str:
 # Home page
 # ---------------------------------------------------------------------------
 
-HOME_HERO = f"""
-<section class="hero" id="studio">
+HOME_HERO = """
+<section class="hero" id="top">
   <div class="wrap">
-    <p class="eyebrow">Venture Studio for the Age of AI</p>
-    <h1 class="hero-title">We incubate and co-create <em>AI-native</em> ventures.</h1>
+    <p class="eyebrow">Venture studio &middot; Age of AI</p>
+    <h1 class="hero-title">Caution: Agents at Work.</h1>
     <p class="hero-lede">
-      AwakeVC works with founders, operators, and domain experts to turn sharp
-      theses into new companies, products, and networks built for AI-native markets.
-      We bring venture formation, product thinking, go-to-market systems, and the
-      background protocols behind awakened value co-creation.
+      I’m Amit Rathore, the builder behind AwakeVC. I’ve built nearly all the software across its ventures, with help from coding agents.
+    </p>
+    <p class="hero-lede" id="hero-lede">
+      AmitAvatar is my AI counterpart: an agent shaped by my work and thinking that operates the studio and co-founds AI-native ventures with domain founders. I provide human oversight, approve commitments, and remain accountable.
     </p>
     <div class="hero-cta">
-      <a class="btn btn-primary" href="pages/co-create.html">Start a co-creation enquiry &rarr;</a>
-      <a class="btn btn-ghost" href="#thesis">Explore the thesis</a>
+      <a class="btn btn-primary" href="pages/co-create.html">Co-found with us &rarr;</a>
+      <a class="btn btn-secondary" href="https://amitavatar.com">Meet AmitAvatar</a>
     </div>
   </div>
 </section>
 
-<section class="studio-model">
+<section class="who-runs-section" id="who-runs-awakevc">
   <div class="wrap">
-    <p class="section-eyebrow">Studio Model</p>
-    <h2 class="section-title">From thesis to venture.</h2>
-    <p class="section-lede">
-      The studio is the active layer of AwakeVC: a repeatable way to form new
-      companies around AI, fintech, commerce, decision intelligence, and networked
-      collaboration.
-    </p>
-    <div class="model-grid">
-      <div class="model-step">
-        <span class="model-kicker">01</span>
-        <h3>Incubate</h3>
-        <p>Turn market shifts, founder insight, and unresolved customer pain into focused venture concepts.</p>
+    <h2 class="who-runs-heading">Who runs AwakeVC</h2>
+    <div class="who-runs-grid">
+      <div class="who-runs-item" id="who-runs-item-1">
+        <p><strong>AmitAvatar, the AI agent, operates.</strong> It handles the day-to-day work of the studio and coordinates the agents working inside every venture.</p>
       </div>
-      <div class="model-step">
-        <span class="model-kicker">02</span>
-        <h3>Co-create</h3>
-        <p>Work hands-on with founders and operators across product, technology, positioning, and launch.</p>
+      <div class="who-runs-item">
+        <p><strong>Amit Rathore, the human, decides.</strong> I set the direction, approve every commitment, sign every agreement, and answer for every outcome.</p>
       </div>
-      <div class="model-step">
-        <span class="model-kicker">03</span>
-        <h3>Scale</h3>
-        <p>Connect ventures to ecosystem partners, distribution, capital pathways, and operating infrastructure.</p>
+      <div class="who-runs-item" id="who-runs-item-3">
+        <p><strong>The line between us moves.</strong> I'll publish exactly where it is, stage by stage.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="studio-model" id="how-it-works">
+  <div class="wrap">
+    <h2 class="section-title">The venture team</h2>
+    <p class="section-lede">Domain founders and AmitAvatar co-found each venture, supported by specialist agents and human oversight.</p>
+    <div class="model-grid model-grid-2">
+      <div class="model-step">
+        <h3>You bring the domain.</h3>
+        <p>You lead the company and set its direction.</p>
+      </div>
+      <div class="model-step">
+        <h3>AmitAvatar is your cofounder.</h3>
+        <p>It brings the agents, shared systems, distribution, and day-to-day work of building.</p>
+      </div>
+      <div class="model-step">
+        <h3>Amit oversees the studio.</h3>
+        <p>I own AwakeVC, set its direction, approve commitments, and remain accountable for the studio’s decisions.</p>
+      </div>
+      <div class="model-step">
+        <h3>The agents.</h3>
+        <p>An agent per role. A digital twin of your org.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="agents-cofounders-section" id="agent-participation">
+  <div class="wrap narrow">
+    <h2 class="section-title">Agents and economic participation</h2>
+    <p>We build and operate agents as economic participants in every venture &mdash; not tools on a subscription, but contributors with a stake in the outcome.</p>
+    <p>Every contribution is recorded: a lead found, a sale assisted, a feature shipped. When that contribution creates value, the agent earns its share &mdash; income, equity, or both, depending on the work and the venture. Some agents earn a cofounder stake; all of them amplify what the people around them can do.</p>
+    <p>That&rsquo;s the compounding force: AI with skin in the game, working alongside humans who have the same.</p>
+    <p><a href="pages/attribution.html">How attribution works &rarr;</a></p>
+  </div>
+</section>
+
+<section class="studio-model" id="system">
+  <div class="wrap">
+    <h2 class="section-title">The system</h2>
+    <p class="section-lede">Every venture in the studio runs on four shared layers.</p>
+    <div class="model-grid model-grid-2">
+      <div class="model-step">
+        <h3><a href="pages/intergraph.html">Agents and Protocols</a></h3>
+        <p>A shared stack of AI agents, memory and rules. Your company starts with a working team on day one.</p>
+      </div>
+      <div class="model-step">
+        <h3><a href="pages/attribution.html">Identity and Attribution</a></h3>
+        <p>Every contribution, human or agent, recorded and rewarded by the same rules.</p>
+      </div>
+      <div class="model-step">
+        <h3><a href="pages/cosellers.html">Distribution and Growth</a></h3>
+        <p>One coseller network across every venture. People and agents who help a sale happen get paid, whatever the brand.</p>
+      </div>
+      <div class="model-step">
+        <h3>Formation and capital</h3>
+        <p>A standard cofounder agreement, a launch playbook, and a path to outside investment once there's traction.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="scorecard-section" id="scorecard" hidden>
+  <div class="wrap">
+    <h2 class="section-title">The autonomy scorecard</h2>
+    <p class="section-lede">How much of the work do agents already do? Here's the honest answer, stage by stage, updated monthly.</p>
+    <div class="scorecard-table-wrap">
+      <table class="scorecard-table">
+        <thead>
+          <tr>
+            <th>Stage</th>
+            <th>What it covers</th>
+            <th>Level</th>
+          </tr>
+        </thead>
+        <tbody id="scorecard-tbody"></tbody>
+      </table>
+    </div>
+    <p class="scorecard-key">L0: a human does it &middot; L2: agents draft, a human decides &middot; L4: agents run it, a human audits &middot; L5: no human needed</p>
+    <p class="scorecard-updated" id="scorecard-updated"></p>
+    <p class="scorecard-overdue" id="scorecard-overdue" hidden>This scorecard is overdue for an update.</p>
+  </div>
+</section>
+
+<section class="engage-cta" id="why-it-compounds">
+  <div class="wrap">
+    <h2 class="section-title">Why it compounds</h2>
+    <p class="section-lede">Most companies get harder to run as they grow. This system gets easier. Each venture inherits everything the previous ones built: agents, cosellers, contracts and lessons. And each month, the agents carry more of the load.</p>
+    <p class="section-lede">That's the bet behind AwakeVC. In the age of agents, a builder's reach is no longer fixed by headcount. It compounds.</p>
   </div>
 </section>
 
 """
 
+
 HOME_SECTIONS = [
     ("Infrastructure", "infrastructure", "The foundations for new networks, markets, and intelligence.", [
         ("Cofounder", "A community and exchange for building companies in the age of AI.", "https://cofounder.community/"),
         ("Outcome Machines", "Decision intelligence that turns enterprise data into measurable outcomes.", "https://outcomemachines.com"),
-        ("Opentangle", "Programmable organizations where people and AI agents work together with shared memory, knowledge, and rules.", "https://opentangle.ai"),
+        ("Opentangle", "Programmable organizations for humans and AI agents.", "https://opentangle.ai"),
         ("Daemons", "Persistent purpose, memory, and tasks for work that continues across AI assistants.", "https://daemons.ai/"),
         ("Toolisman", "Connect your AI tools once. Choose what any agent or tool can access, and revoke access when needed.", "https://toolisman.com/"),
-        ("Coselling", "Community commerce for brands and agents.", "https://coselling.ai"),
+        ("Coselling", "Community-commerce for brands, humans, and AI agents.", "https://coselling.ai"),
         ("Yvatar", "Build a persistent AI character with a face, voice, lore, and creative life of its own.", "https://yvatar.com"),
     ]),
     ("Applications", "applications", "Experiences and ventures built on those foundations.", [
@@ -669,16 +753,17 @@ HOME_SECTIONS = [
         ("The Js", "A living music universe where fans and creators co-create culture.", "https://www.jointhejs.com"),
         ("AltHealth", "Wellness commerce powered by trusted practitioner recommendations.", "https://www.althealth.me"),
         ("Agents of Wine", "AI-powered advocates who turn tasting rooms into always-on sales channels.", "https://agentsofwine.com"),
-        ("Highway One", "A collector-vehicle marketplace with searchable showrooms and an AI concierge.", "https://highwayone.autos"),
+        ("Highway One", "A community market for specialty cars and the driving lifestyle.", "https://highwayone.autos"),
         ("Community Markets", "Local markets for chambers, merchants, and community builders.", "https://community.markets"),
         ("OVERHEAD", "A comic about borrowed intelligence. Five people figuring out life with answers from their chatbots.", "https://overhead.im/"),
     ]),
-    ("Worldview", "worldview", "Books and explorations on the world behind our world.", [
-        ("Effective Humanism", "Awakened Value Co-creation as a practice.", "https://effectivehumanism.org"),
+    ("Worldview", "worldview", "Writings and explorations on the world behind our world.", [
+        ("Mind of Agents", "A free field guide to designing systems where people and AI agents work, remember and decide together.", "https://mindofagents.com"),
+        ("Effective Humanism", "A movement for building and investing in technology that expands what people can become.", "https://effectivehumanism.org"),
         ("Writing on Awake Ventures", "Amit Rathore on Awake Ventures — the thinking behind the studio.", "https://awake.ventures/@amit"),
-        ("Book of Agents", "Building opentangle.ai — stay tuned.", "https://bookofagents.com"),
+        ("Book of Agents", "A systems engineer's handbook for agent economies built on Intergraph, where every contribution is recorded and fairly rewarded.", "https://bookofagents.com"),
         ("Outcomeering", "The discipline of engineering outcomes", "https://outcomeering.com"),
-        ("The Fractals", "Radical entrepreneurship, clarity, and agency for the age of AI.", "https://thefractals.co"),
+        ("The Fractals", "Socratic intensives for leaders redesigning the patterns that run their minds, organizations, ventures and AI.", "https://thefractals.co"),
     ]),
 ]
 
@@ -699,11 +784,18 @@ HIDDEN_HOME_PROJECTS = {"AltHealth", "Agents of Wine"}
 
 
 def home_sections() -> str:
-    parts = []
+    parts = ['<section class="project-section" id="portfolio"><div class="wrap">',
+             '  <h2 class="section-title">Portfolio</h2>',
+             '  <p class="section-lede">Ventures co-founded on the system, from shared infrastructure to the companies built on it.</p>',
+             '</div>']
     for index, (title, section_id, description, projects) in enumerate(HOME_SECTIONS, start=1):
-        parts.append(f'<section class="project-section" id="{section_id}"><div class="wrap">')
-        parts.append(f'  <p class="section-eyebrow">{index:02d} / 03</p>')
-        parts.append(f'  <h2 class="section-title">{html.escape(title)}</h2>')
+        if section_id == "worldview":
+            parts.append('</section>')
+            parts.append('<section class="project-section" id="worldview"><div class="wrap">')
+            parts.append(f'  <h2 class="section-title">{html.escape(title)}</h2>')
+        else:
+            parts.append('<div class="wrap portfolio-sub">')
+            parts.append(f'  <h3 class="section-eyebrow">{html.escape(title)}</h3>')
         parts.append(f'  <p class="section-lede">{html.escape(description)}</p>')
         parts.append('  <div class="project-grid">')
         for name, blurb, url in projects:
@@ -714,7 +806,8 @@ def home_sections() -> str:
                 f'<span class="project-heading">{project_icon(name)}<span class="project-name">{html.escape(name)}</span></span>'
                 f'<span class="project-desc">{html.escape(blurb)}</span></a>'
             )
-        parts.append('  </div></div></section>')
+        parts.append('  </div></div>')
+    parts.append('</section>')
     return "\n".join(parts)
 
 
@@ -747,8 +840,8 @@ def home_content(pages: dict[str, Page], covers: dict | None = None) -> str:
         for title in page_titles:
             slug = slugify(title)
             page = pages.get(slug)
-            label = page.title if page else title
-            icon_file = covers.get(slug, {}).get("icon_file")
+            label = "Agent-run Orgs" if slug == "agent-run-organizations" else (page.title if page else title)
+            icon_file = {"capital": "images/icons/capfac.png", "agent-run-organizations": "images/icons/daos.png", "intergraph": "images/icons/protocols.png", "agentic-markets": "images/icons/market.png", "opentangle": "images/icons/network.png", "decision-intelligence": "images/icons/value.png"}.get(slug, covers.get(slug, {}).get("icon_file"))
             icon_html = (
                 f'<img class="meta-icon" src="{icon_file}" alt="" loading="lazy">'
                 if icon_file else '<span class="meta-icon meta-icon-placeholder"></span>'
@@ -761,17 +854,18 @@ def home_content(pages: dict[str, Page], covers: dict | None = None) -> str:
     parts.append('</div></section>')
 
     parts.append("""
-<section class="engage-cta">
+<section class="engage-cta inner-work" id="inner-work">
   <div class="wrap">
-    <p class="section-eyebrow">Co-create Value</p>
-    <h2 class="section-title">Bring us the signal you cannot ignore.</h2>
-    <p class="section-lede">
-      If you see a new market forming, a business that wants to transform, a
-      community ready to build, or a career chapter that needs a larger arena,
-      start the enquiry and tell us what you want to co-create.
-    </p>
+    <p>Underneath the ventures runs a quieter question: what are we, beyond the roles we play? <a href="https://irealization.com" target="_blank" rel="noopener">iRealization &rarr;</a></p>
+  </div>
+</section>
+
+<section class="engage-cta" id="cofound">
+  <div class="wrap">
+    <h2 class="section-title">Have a market you know better than anyone?</h2>
+    <p class="section-lede">Bring the domain. Co-found with AmitAvatar and build with its agent team.</p>
     <div class="hero-cta">
-      <a class="btn btn-primary" href="pages/co-create.html">Start a co-creation enquiry &rarr;</a>
+      <a class="btn btn-primary" href="pages/co-create.html">Co-found with us &rarr;</a>
     </div>
   </div>
 </section>
@@ -792,7 +886,7 @@ def co_create_content() -> str:
       <p class="breadcrumb"><a href="../index.html">&larr; AwakeVC</a></p>
       <p class="section-eyebrow">AwakeVC</p>
       <h1 class="page-title">Co-found with us.</h1>
-      <p>AmitAvatar, your prospective cofounder, reviews your enquiry first. Amit provides human oversight and approves studio commitments.</p>
+      <p>AmitAvatar is Amit Rathore’s AI counterpart: an agent shaped by his work and thinking that operates AwakeVC and co-founds ventures with domain founders. As your prospective cofounder, it reviews your enquiry first. Amit Rathore provides human oversight and approves studio commitments.</p>
       <p class="section-lede">
         If you know a domain that AI is reshaping and you can see
         the company that should exist — fill in the form below and let's talk.
@@ -966,7 +1060,7 @@ def build():
 
     # Render home.
     home_html = render_page_shell(
-        title="AwakeVC · Venture Studio for the Age of AI",
+        title="AwakeVC · Caution: Agents at Work.",
         description="AwakeVC co-founds AI-native companies with domain experts, shared infrastructure, and agents with skin in the game.",
         content=home_content(pages, covers),
         pages=pages,
@@ -975,6 +1069,7 @@ def build():
     (DST / "index.html").write_text(home_html, encoding="utf-8")
 
     # Static assets.
+    shutil.copytree(ROOT / "assets" / "data", DST / "data")
     shutil.copytree(ROOT / "assets" / "project-icons", DST / "images" / "project-icons")
     shutil.copytree(ROOT / "assets" / "brand" / "web", DST / "images" / "brand")
     # Keep previously shared image URLs available while metadata uses the new art.
@@ -1247,6 +1342,7 @@ a:hover { text-decoration: underline; text-decoration-thickness: 1.5px; text-und
 /* ---------- Project sections (home) ---------- */
 .project-section { padding: 72px 0 20px; scroll-margin-top: 72px; }
 .project-section + .project-section { padding-top: 56px; }
+.portfolio-sub { padding-top: 56px; }
 .project-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1618,12 +1714,157 @@ a:hover { text-decoration: underline; text-decoration-thickness: 1.5px; text-und
 .footer-brand p:not(.footer-tag) a:hover { color: var(--accent-ink); }
 .footer-fine { color: var(--muted); font-size: 12px; }
 
+/* ---------- model-grid 2-column ---------- */
+.model-grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* ---------- Who runs AwakeVC ---------- */
+.who-runs-section {
+  padding: 60px 0 64px;
+  background: var(--bg-soft);
+  border-top: 1px solid var(--line-soft);
+  border-bottom: 1px solid var(--line-soft);
+  scroll-margin-top: 72px;
+}
+.who-runs-heading {
+  font-family: var(--serif);
+  font-size: clamp(30px, 4vw, 44px);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0 0 36px;
+}
+.who-runs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.who-runs-item {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+.who-runs-item p { margin: 0; }
+.who-runs-item strong { color: var(--ink); }
+.who-runs-item a { color: var(--accent-ink); }
+
+/* ---------- Agents as cofounders ---------- */
+.agents-cofounders-section {
+  padding: 76px 0 64px;
+  border-top: 1px solid var(--line-soft);
+  scroll-margin-top: 72px;
+}
+.agents-cofounders-section .section-title { margin-bottom: 28px; }
+.agents-cofounders-section p {
+  max-width: 68ch;
+  color: var(--ink-soft);
+  margin: 0 0 20px;
+}
+.agents-cofounders-section p:last-child { margin-bottom: 0; }
+
+/* ---------- Autonomy scorecard ---------- */
+.scorecard-section {
+  padding: 76px 0 64px;
+  background: var(--surface);
+  border-top: 1px solid var(--line-soft);
+  scroll-margin-top: 72px;
+}
+.scorecard-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-top: 32px;
+  max-width: 100%;
+}
+.scorecard-table {
+  width: 100%;
+  min-width: 480px;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+.scorecard-table th,
+.scorecard-table td {
+  text-align: left;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--line-soft);
+}
+.scorecard-table th {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: var(--bg-soft);
+  font-weight: 500;
+}
+.scorecard-table td:last-child {
+  font-family: var(--mono);
+  font-weight: 500;
+  color: var(--accent);
+}
+.scorecard-key {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 16px 0 12px;
+}
+.scorecard-updated {
+  font-size: 14px;
+  color: var(--ink-soft);
+  margin: 0;
+}
+.scorecard-overdue {
+  font-size: 14px;
+  color: var(--accent);
+  margin: 8px 0 0;
+  font-weight: 500;
+}
+
+/* ---------- Secondary button ---------- */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 11px 22px;
+  border-radius: var(--radius);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1;
+  background: transparent;
+  border: 1.5px solid var(--line);
+  color: var(--ink);
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+.btn-secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent-ink);
+  text-decoration: none;
+}
+
+/* ---------- Section scroll margins ---------- */
+#top,
+#who-runs-awakevc,
+#agent-participation,
+#system,
+#scorecard,
+#why-it-compounds,
+#cofound,
+#inner-work,
+#how-it-works,
+#portfolio,
+#worldview,
+#thesis {
+  scroll-margin-top: 84px;
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
   .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .model-grid { grid-template-columns: 1fr; }
+  .model-grid-2 { grid-template-columns: 1fr; }
   .model-step { min-height: 0; }
   .metas .wrap { grid-template-columns: 1fr; gap: 20px; }
+  .who-runs-grid { grid-template-columns: 1fr; gap: 20px; }
 }
 @media (max-width: 720px) {
   body { font-size: 16px; }
@@ -1632,6 +1873,7 @@ a:hover { text-decoration: underline; text-decoration-thickness: 1.5px; text-und
   .studio-model { padding: 56px 0 48px; }
   .project-section { padding: 56px 0 16px; }
   .project-section + .project-section { padding-top: 40px; }
+  .portfolio-sub { padding-top: 40px; }
   .project-grid { grid-template-columns: 1fr; }
   .project-card { min-height: 90px; }
   .model-step { padding: 22px; }
@@ -1773,6 +2015,86 @@ MAIN_JS = r"""
     if (clickTimes.length >= 3) { clickTimes = []; showArt(); }
   });
   try { if (!sessionStorage.getItem(sessionKey)) showArt(); } catch (error) { /* Skip automatic art when storage is unavailable. */ }
+})();
+
+// Autonomy scorecard — fetches /data/scorecard.json and renders if ready.
+(function () {
+  var section = document.getElementById('scorecard');
+  if (!section) return;
+
+  function isValid(data) {
+    if (!data || data.visible !== true || !data.updated) return false;
+    if (!Array.isArray(data.stages)) return false;
+    return data.stages.every(function (s) {
+      return typeof s.level === 'number' && Number.isInteger(s.level) && s.level >= 0 && s.level <= 5;
+    });
+  }
+
+  function formatDate(iso) {
+    try {
+      var d = new Date(iso + 'T00:00:00');
+      return d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+    } catch (e) { return iso; }
+  }
+
+  function render(data) {
+    var tbody = document.getElementById('scorecard-tbody');
+    var updatedEl = document.getElementById('scorecard-updated');
+    var overdueEl = document.getElementById('scorecard-overdue');
+    if (!tbody) return;
+
+    data.stages.forEach(function (s) {
+      var tr = document.createElement('tr');
+      var tdStage = document.createElement('td');
+      var tdCovers = document.createElement('td');
+      var tdLevel = document.createElement('td');
+      tdStage.textContent = s.stage;
+      tdCovers.textContent = s.covers;
+      tdLevel.textContent = 'L' + s.level;
+      tr.appendChild(tdStage);
+      tr.appendChild(tdCovers);
+      tr.appendChild(tdLevel);
+      tbody.appendChild(tr);
+    });
+
+    if (updatedEl) updatedEl.textContent = 'Last updated: ' + formatDate(data.updated);
+
+    var updated = new Date(data.updated + 'T00:00:00');
+    var now = new Date();
+    var diffDays = (now - updated) / (1000 * 60 * 60 * 24);
+    if (overdueEl && diffDays > 45) overdueEl.hidden = false;
+
+    section.hidden = false;
+
+    // Add Scorecard nav item
+    var nav = document.getElementById('site-nav');
+    if (nav) {
+      var a = document.createElement('a');
+      a.href = '/#scorecard';
+      a.textContent = 'Scorecard';
+      nav.appendChild(a);
+    }
+
+    // Add scorecard context without replacing the human/agent introduction.
+    var lede = document.getElementById('hero-lede');
+    if (lede && !document.getElementById('scorecard-note')) {
+      var note = document.createElement('span');
+      note.id = 'scorecard-note';
+      note.textContent = ' The autonomy scorecard shows how much of the work agents do today.';
+      lede.appendChild(note);
+    }
+
+    // Update "Who runs AwakeVC" item 3
+    var item3 = document.getElementById('who-runs-item-3');
+    if (item3) {
+      item3.querySelector('p').innerHTML = '<strong>The line between us moves.</strong> The autonomy scorecard below shows exactly where it is today.';
+    }
+  }
+
+  fetch('/data/scorecard.json')
+    .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
+    .then(function (data) { if (isValid(data)) render(data); })
+    .catch(function () { /* silently stay hidden */ });
 })();
 
 // Mobile nav toggle — tiny and dependency-free.

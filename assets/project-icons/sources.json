@@ -93,5 +93,9 @@
     "name": "The Fractals",
     "file": "the-fractals.jpg",
     "source": "https://thefractals.co/assets/images/image02.jpg"
+  },
+  {
+    "name": "Mind of Agents",
+    "monogram": "Mo"
   }
 ]
