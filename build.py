@@ -667,6 +667,7 @@ HOME_SECTIONS = [
     ("Applications", "applications", "Experiences and ventures built on those foundations.", [
         ("Agents of Mind", "Independent AI tools, fresh perspectives, and a marketplace for builders.", "https://www.agentsofmind.com"),
         ("The Js", "A living music universe where fans and creators co-create culture.", "https://www.jointhejs.com"),
+        ("OVERHEAD", "A comic about borrowed intelligence. Five people figuring out life with answers from their chatbots.", "https://overhead.im/"),
         ("AltHealth", "Wellness commerce powered by trusted practitioner recommendations.", "https://www.althealth.me"),
         ("Agents of Wine", "AI-powered advocates who turn tasting rooms into always-on sales channels.", "https://agentsofwine.com"),
         ("Highway One", "A collector-vehicle marketplace with searchable showrooms and an AI concierge.", "https://highwayone.autos"),

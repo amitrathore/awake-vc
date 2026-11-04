@@ -45,6 +45,11 @@
     "note": "Typographic fallback; no usable website icon found."
   },
   {
+    "name": "OVERHEAD",
+    "file": "overhead.svg",
+    "source": "https://overhead.im/assets/favicon.svg"
+  },
+  {
     "name": "AltHealth",
     "file": "althealth.svg",
     "source": "https://www.althealth.me/assets/althealth-icon.svg"
