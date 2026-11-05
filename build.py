@@ -745,6 +745,7 @@ HOME_SECTIONS = [
         ("Opentangle", "Programmable organizations for humans and AI agents.", "https://opentangle.ai"),
         ("Daemons", "Persistent purpose, memory, and tasks for work that continues across AI assistants.", "https://daemons.ai/"),
         ("Toolisman", "Connect your AI tools once. Choose what any agent or tool can access, and revoke access when needed.", "https://toolisman.com/"),
+        ("Shoptype", "Market ecosystems where human cosellers and AI agents drive growth, distribution, and sales.", "https://shoptype.com/"),
         ("Coselling", "Community-commerce for brands, humans, and AI agents.", "https://coselling.ai"),
         ("Yvatar", "Build a persistent AI character with a face, voice, lore, and creative life of its own.", "https://yvatar.com"),
     ]),
