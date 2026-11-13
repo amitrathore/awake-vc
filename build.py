@@ -744,10 +744,11 @@ HOME_SECTIONS = [
         ("Outcome Machines", "Decision intelligence that turns enterprise data into measurable outcomes.", "https://outcomemachines.com"),
         ("Opentangle", "Programmable organizations for humans and AI agents.", "https://opentangle.ai"),
         ("Daemons", "Persistent purpose, memory, and tasks for work that continues across AI assistants.", "https://daemons.ai/"),
-        ("Toolisman", "Connect your AI tools once. Choose what any agent or tool can access, and revoke access when needed.", "https://toolisman.com/"),
+        ("SalePiper", "A shared sales pipeline for people and approved AI agents, connecting contacts, deal context, and next actions.", "https://salepiper.com/"),
         ("Shoptype", "Market ecosystems for the age of AI.", "https://shoptype.com/"),
         ("Coselling", "Community-powered distribution for brands, humans, and AI agents.", "https://coselling.ai"),
         ("Yvatar", "Build a persistent AI character with a face, voice, lore, and creative life of its own.", "https://yvatar.com"),
+        ("Toolisman", "Connect your AI tools once. Choose what any agent or tool can access, and revoke access when needed.", "https://toolisman.com/"),
     ]),
     ("Applications", "applications", "Experiences and ventures built on those foundations.", [
         ("Agents of Mind", "Independent AI tools, fresh perspectives, and a marketplace for builders.", "https://www.agentsofmind.com"),
