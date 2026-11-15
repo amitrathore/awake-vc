@@ -78,7 +78,8 @@ FOOTER_HTML = """
 NAV_ITEMS = [
     ("Studio", "#who-runs-awakevc"),
     ("Agents", "#agent-participation"),
-    ("Ventures", "#portfolio"),
+    ("Portfolio", "#portfolio"),
+    ("Worldview", "#worldview"),
     ("Design", "#thesis"),
     ("Team", "team"),
 ]
